@@ -126,11 +126,11 @@ SELECT
 WmsTskId
 ,CmdSno
 ,CmdSts
-,PRT
+
 ,StnNo
 ,CmdMode
 ,Loc	
-,TrnDate
+, TrnDate
 ,CMDNO
 ,LINEID
 ,CTICKETCODE
