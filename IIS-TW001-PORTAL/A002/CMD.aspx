@@ -84,10 +84,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container-fluid">
-        <h1>
+    <div class="container">
+          <h1>
             <br />
-            CMD</h1>
+         <a href='./'>Index</a> ->CMD</h1>
+     
 
         <h2>先確定是立庫</h2>
         <p>SELECT @PLCType = PLCType FROM dbo.BASE_CRANECONFIG WITH(NOLOCK) WHERE CRANEID = @P_LineId AND FLAG=0; </p>

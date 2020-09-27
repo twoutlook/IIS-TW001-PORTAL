@@ -85,9 +85,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>
+     <h1>
             <br />
-            PART 只顯示規範後的</h1>
+         <a href='./'>Index</a> -> PART</h1>
 
 
 
@@ -96,7 +96,7 @@
 
 
               <%=GetHtmlTableWhRec(@"
-select PART 料號 ,RANK_FINAL [批/序號(RANK)],PART_FULL 數據庫實際料號 from TW_BASE_PART order by PART_FULL
+select ID, PART 料號 ,RANK_FINAL [批/序號(RANK)],PART_FULL 數據庫實際料號 from TW_BASE_PART order by PART_FULL
 
 ")%>
         <div><hr />

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>任务下达（WMS调用）</title>
+    <style>
+        .brief {
+            background-color: lavender;
+            color: black;
+            font-size: 125%;
+            margin-left: 0px;
+        }
+
+        .very-red {
+            background-color: papayawhip;
+            color: red;
+            font-size: 110%;
+            margin-left: 0px;
+        }
+
+        .very-red-xl {
+            background-color: papayawhip;
+            color: red;
+            font-size: 150%;
+            margin-left: 0px;
+        }
+
+        .title {
+            background-color: navy;
+            color: white;
+            font-size: 300%;
+            margin-left: 0px;
+        }
+
+        .note {
+            background-color: navy;
+            color: white;
+            font-size: 150%;
+            margin-left: 0px;
+        }
+
+        .web-ref {
+            background-color: navy;
+            color: white;
+            font-size: 150%;
+            margin-left: 0px;
+        }
+
+
+        .subtitle {
+            margin-top: 16px;
+            background-color: lightgoldenrodyellow;
+            color: black;
+            font-size: 200%;
+            margin-left: 0px;
+        }
+
+        .bug {
+            background-color: lightgoldenrodyellow;
+            color: red;
+            font-size: 135%;
+            margin-left: 8px;
+        }
+
+        .wms-page {
+            background-color: lightgray;
+            color: navy;
+            font-size: 125%;
+            margin-left: 8px;
+        }
+
+        .key-condition {
+            background-color: pink;
+            color: navy;
+            /*font-size: 125%;*/
+            margin-left: 8px;
+        }
+
+        table.gridtable {
+            font-family: verdana, arial, sans-serif;
+            font-size: 90%;
+            /*color:#333333;*/
+            color: black;
+            border-width: 1px;
+            /*border-color: #666666;*/
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+
+            table.gridtable th {
+                text-align: center;
+                align-content: center;
+                align-items: center;
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                /*border-color: #666666;*/
+                border-color: #666666;
+                background-color: #dedede;
+            }
+
+            table.gridtable td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                /*border-color: #666666;*/
+                border-color: #666666;
+                background-color: #ffffff;
+            }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div style='margin-top: 30px;'>
+          <h1><a href='http://210.71.231.5:8080/TAIWAY.html'>TAIWAY 台惟</a>
+          </h1>
+    
+        </div>
+    <h1>任务下达（WMS调用）</h1>
+    <hr>
+    <h2></h2>
+
+    <table class='gridtable'>
+        <tr>
+            <th style="text-align:left">方法名称</th>
+            <th colspan="2" style="text-align:left">搬运任务下达</th>
+        </tr>
+        <tr>
+            <th style="text-align:left">方法</th>
+            <th colspan="2" style="text-align:left">http://[IP]:[端口]/api/WMSWCS/MoveTaskAdd</th>
+        </tr>
+        <tr>
+            <th  style="text-align:left">请求类型</th>
+            <th colspan="2"  style="text-align:left">POST</th>
+        </tr>
+        <tr>
+            <th style="text-align:left">说明</th>
+            <th colspan="2" style="text-align:left">出库、库对库搬运任务下达</th>
+        </tr>
+        <tr>
+            <th style="text-align:left">方法名称</th>
+            <th style="text-align:left">类型</th>
+            <th style="padding: 0; min-width: 70%;">
+                <table class='gridtable' style="width: 100%; height: 100%; border: hidden">
+                    <tr>
+                        <th colspan="6">FromBody JSON对象说明</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px;">属性名称</th>
+                        <th style="width: 120px;">类型</th>
+                        <th style="width: 120px;">字符长度</th>
+                        <th style="width: 120px;">允许为空</th>
+                        <th style="width: 120px;">描述</th>
+                        <th style="width: 120px;">备注</th>
+                    </tr>
+                </table>
+            </th>
+
+            <tr style="padding: 0; min-width: 70%;">
+                <td>输入</td>
+                <td>JSON对象</td>
+                <td style="padding: 0; min-width: 70%;">
+                    <table style="width: 100%; height: 100%; border: hidden">
+                        <tr>
+                            <td style="width: 122px;">taskNo</td>
+                            <td style="width: 122px;">string</td>
+                            <td style="width: 122px;">32</td>
+                            <td style="width: 122px;">否</td>
+                            <td style="width: 122px;">任务号</td>
+                            <td style="width: 122px;"></td>
+                        </tr>
+                        <tr>
+                            <td>palletNo</td>
+                            <td>string</td>
+                            <td>32</td>
+                            <td>否</td>
+                            <td>托盘号</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>bussinessType</td>
+                            <td>string</td>
+                            <td>2</td>
+                            <td>否</td>
+                            <td>任务类型</td>
+                            <td>1:入库 2:出库 5：库对库</td>
+                        </tr>
+                        <tr>
+                            <td>locationFrom</td>
+                            <td>string</td>
+                            <td>7</td>
+                            <td>否</td>
+                            <td>起始库位（站口）</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>locationTo</td>
+                            <td>string</td>
+                            <td>7</td>
+                            <td>否</td>
+                            <td>目标库位（站口）</td>
+                            <td>指定出库的站口号</td>
+                        </tr>
+                        <tr>
+                            <td>deliveryTime</td>
+                            <td>string</td>
+                            <td>20</td>
+                            <td>否</td>
+                            <td>任务下达时间</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr style="padding: 0; min-width: 70%;">
+            <td>输入</td>
+            <td>JSON对象</td>
+            <td style="padding: 0; min-width: 70%;">
+                <table style="width: 100%; height: 100%; border: hidden">
+                    <tr>
+                        <td style="width: 120px;">success</td>
+                        <td style="width: 120px;">bool</td>
+                        <td style="width: 120px;"></td>
+                        <td style="width: 120px;">否</td>
+                        <td style="width: 120px;">true：成功，false：失败</td>
+                        <td style="width: 120px;">调用成功，允许进入</td>
+                    </tr>
+                    <tr>
+                        <td>errCode</td>
+                        <td>string</td>
+                        <td>8</td>
+                        <td>是</td>
+                        <td>异常码，参考异常码定义</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>errMsg</td>
+                        <td>string</td>
+                        <td>256</td>
+                        <td>是</td>
+                        <td>错误说明，当success为false时，errCode有值</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+            <tr>
+                <td>输入</td>
+                 <td>实例对象</td>
+                 <td>{"lineId":"4","taskNo":"11145","palletNo":"10005861","bussinessType":"2","locationFrom":"0402604","locationTo":"C132","deliveryTime":"2020-09-10 11:53:56"}</td>
+            </tr>
+
+            <tr>
+                <td>输出</td>
+                 <td>实例对象</td>
+                 <td>{"success":"true","errCode":"","errMsg":""}</td>
+            </tr>
+    </table>
+
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

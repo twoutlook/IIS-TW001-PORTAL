@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>TAIWAY</title>
+  <style>
+    .brief {
+      background-color: lavender;
+      color: black;
+      font-size: 125%;
+      margin-left: 0px;
+    }
+
+    .very-red {
+      background-color: papayawhip;
+      color: red;
+      font-size: 110%;
+      margin-left: 0px;
+    }
+
+    .very-red-xl {
+      background-color: papayawhip;
+      color: red;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+    .title {
+      background-color: navy;
+      color: white;
+      font-size: 300%;
+      margin-left: 0px;
+    }
+
+    .note {
+      background-color: navy;
+      color: white;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+    .sql {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: rgb(226, 247, 133);
+      color: black;
+      font-weight: bold;
+      font-size: 90%;
+      margin-left: 0px;
+    }
+
+    .web-ref {
+      background-color: navy;
+      color: white;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+
+    .subtitle {
+      margin-top: 16px;
+      background-color: lightgoldenrodyellow;
+      color: black;
+      font-size: 200%;
+      margin-left: 0px;
+    }
+
+    .bug {
+      background-color: lightgoldenrodyellow;
+      color: red;
+      font-size: 135%;
+      margin-left: 8px;
+    }
+
+    .wms-page {
+      background-color: lightgray;
+      color: navy;
+      font-size: 125%;
+      margin-left: 8px;
+    }
+
+    .key-condition {
+      background-color: pink;
+      color: navy;
+      /*font-size: 125%;*/
+      margin-left: 8px;
+    }
+
+    table.gridtable {
+      font-family: verdana, arial, sans-serif;
+      font-size: 90%;
+      /*color:#333333;*/
+      color: black;
+      border-width: 1px;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      border-collapse: collapse;
+    }
+
+    table.gridtable th {
+      text-align: center;
+      align-content: center;
+      align-items: center;
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      background-color: #dedede;
+    }
+
+    table.gridtable td {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class='container'>
+    <div style='margin-top: 30px;'>
+      <h1><a href='http://210.71.231.5:8080/TAIWAY.html'>TAIWAY 台惟</a>
+      </h1>
+
+    </div>
+
+
+
+    <hr>
+    <h2>項目需求:</h2>
+    <div style="font-size: 150%;margin-left: 32px;">
+      1.要求無棧板 (使用虛擬棧板)
+      <br>2.料號加RANK (DB:[料號]=[料號]+[RANK]&nbsp;&nbsp;UI:[料號][RANK])
+    </div>
+
+    <hr>
+    <h2>人力編組:</h2>
+    <div style="font-size: 150%;margin-left: 32px;">
+      <table class='gridtable'>
+        <tr>
+          <th></th>
+          <th>職稱</th>
+          <th>姓名</th>
+          <th>備註</th>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>主項目經理</td>
+          <td>李開平</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>支援項目經理</td>
+          <td>杜文生</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>實施工程理</td>
+          <td>李開平,陳先顥</td>
+          <td>IIS,SQL,權限平台,WMS,WebPDA,連結盟立WCS</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>主工程師</td>
+          <td>Mark陳炳陵</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>5</th>
+          <td>支援工程師</td>
+          <td>仲云海</td>
+          <td></td>
+        </tr>
+
+
+      </table>
+
+
+    </div>
+
+    <hr>
+    <h2>環境:</h2>
+    <div style="font-size: 150%;margin-left: 32px;">
+      1.PROD 現場正式環境 (李開平,陳先顥)
+      <!-- <table style='margin-left: 32px;  font-size: 110%;'>
+        <tr>
+          <td style='text-align:right;'>WMS&nbsp;&nbsp;</td>
+          <td><a href='http://.../Layout/BaseLayout/'></a>http://.../Layout/BaseLayout/</td>
+
+        </tr>
+        <tr>
+          <td>权限平台&nbsp;&nbsp;</td>
+          <td><a href='http://.../'></a>http://.../</td>
+
+        </tr>
+
+
+
+      </table> -->
+      <br>2.DEMO環境 公網云服務器 (Mark陳炳陵)
+      <table style='margin-left: 32px;  font-size: 110%;'>
+        <tr>
+          <td style='text-align:right;'>WMS&nbsp;&nbsp;</td>
+          <td><a href='http://210.71.231.5:2416/Layout/BaseLayout/'>http://210.71.231.5:2416/Layout/BaseLayout/</a></td>
+
+        </tr>
+        <tr>
+          <td style='text-align:right;'>权限平台&nbsp;&nbsp;</td>
+          <td><a href='http://210.71.231.5:24161'>http://210.71.231.5:24161</a></td>
+
+        </tr>
+        <tr>
+          <td style='text-align:right;'>WebPDA&nbsp;&nbsp;</td>
+          <td><a href='http://210.71.231.5:8001'>http://210.71.231.5:8001</a></td>
+
+        </tr>
+        <tr>
+          <td colspan='2' style='margin-left: 32px;  font-size: 70%;'>Web.config
+            <br>connectionString="Server=WIN-15986090520\SQLEXPRESS;Initial Catalog=NuoXin;User
+            ID=sa;Password=TW001@2020"</td>
+
+        </tr>
+
+
+
+      </table>
+      <br>3.DEV/TEST 開發測試環境 局網 (李舟蕾)
+      <table style='margin-left: 32px;  font-size: 110%;'>
+        <tr>
+          <td style='text-align:right;'>浩登项目网站入口</td>
+          <td><a href='http://192.168.88.3:50001/HaoDeng.html'>http://192.168.88.3:50001/HaoDeng.html</a></td>
+
+        </tr>
+
+
+
+      </table>
+
+    </div>
+    <hr>
+    <h2>系统分析:</h2>
+
+    <div style="font-size: 150%;margin-left: 32px;">
+      <h3>WCS</h3>
+      <div style="font-size: 90%;margin-left: 32px;">
+        詳細規格:(1) <a href="TAIWAY-WCS-1.html">任务状态反馈（WCS调用）</a> (2)<a href="TAIWAY-WCS-2.html">搬运任务下达（WMS调用）</a> </div>
+      <h3>料號+Rank</h3>
+      <div style="font-size: 90%;margin-left: 32px;">
+        在不變動現有DB TABLES結構的基礎上, 使用的 workaround 權變措施
+        <table class='gridtable' style="font-size: 90%;margin-left: 22px;">
+          <tr>
+            <th colspan="3">客戶工作習慣</th>
+            <th>實際DB</th>
+          </tr>
+          <tr>
+            <th>料號</th>
+            <th>等級</th>
+            <th>數量</th>
+            <th>料號+RANK</th>
+            <td style="border-width: 0;">詳細說明:</td>
+          </tr>
+          <tr>
+            <td>DOJ68LA</td>
+            <td></td>
+            <td>0</td>
+            <td>DOJ68LA-_</td>
+            <td style="border-width: 0;">沒有RANK時,仍然補一個_下划線</td>
+          </tr>
+          <tr>
+            <td>DOJ68LA</td>
+            <td>3</td>
+            <td>0</td>
+            <td>DOJ68LA-3</td>
+            <td style="border-width: 0;">RANK為一英數碼, 0-9A-Z</td>
+          </tr>
+          <tr>
+            <td>DOJ68LA</td>
+            <td>4</td>
+            <td>0</td>
+            <td>DOJ68LA-4</td>
+            <td style="border-width: 0;">小寫英文一律轉為大寫,例如h, 轉為H</td>
+          </tr>
+          <tr>
+            <td>DOJ68LA</td>
+            <td>5</td>
+            <td>544</td>
+            <td>DOJ68LA-5</td>
+            <td style="border-width: 0;">不需要顯示 [其他] 字樣</td>
+          </tr>
+          <tr>
+            <td>DOJ68LA</td>
+            <td>7</td>
+            <td>22</td>
+            <td>DOJ68LA-7</td>
+          </tr>
+          <tr>
+            <td>DOJ68LA</td>
+            <td>8</td>
+            <td>0</td>
+            <td>DOJ68LA-8</td>
+          </tr>
+        </table>
+
+
+      </div>
+    </div>
+    <hr>
+    <h2>開發任務:</h2>
+    SVN: https://192.168.88.2/svn/TaiWei/
+    <div style="font-size: 150%;margin-left: 32px;">
+      1.<a href='TAIWAY-DEV01.html'>WCS</a> (潘高)
+      <br>2.<a href='TAIWAY-DEV02.html'>虛擬棧板</a> (潘高)
+      <br>3.<a href='TAIWAY-DEV03.html'>料號+Rank 頁面</a> (Mark陳炳陵)
+      <br>4.<a href='TAIWAY-DEV04.html'>料號+Rank 報表</a>(李舟蕾)
+      <br>5.<a href='TAIWAY-DEV05.html'>登入頁面多語</a> (司薇薇)
+      <br>6.<a href='TAIWAY-DEV06.html'>手工扣帳 (...) </a>
+
+    </div>
+
+
+    <hr>
+    <h2>進度 Review 09/28 10:00</h2>
+
+    <div style="font-size: 150%;margin-left: 32px;">
+      <ol>
+        <li>WCS(潘高) - 已實現。開平和盟立確認最後協議規格,是否需要調整?</li>
+        <li>虛擬棧板 (潘高) - 已實現。包含明細和整單生成。</li>
+        <li>料號+Rank 頁面 (Mark陳炳陵) - TODO 部分查詢UI</li>
+        <li>料號+Rank 報表(李舟蕾) - 開平已驗收。</li>
+        <li>登入頁面多語 (司薇薇) - 已完成。公告信息內容是否調整?</li>
+        <li>入庫 - 原功能。</li>
+        <li>出庫 - (小仲)已實現。</li>
+        <li>返庫 - (小仲)已實現。</li>
+        <li>盤點 - WebPDA已成功部署在云服務器
+          <ul>
+            <li>彥君 09/25 指出,WMS 新增循環盤點, 審核後(狀態由未處理->已審核),按 雪龍 code base 仍需要運行存儲過程
+              <span class='sql'>
+              <br>update CMD_MST set cmdsts='7' where WmsTskId='7406'
+              <br>EXEC dbo.Proc_ModifyStatus_FromASRS_ID '7406'; </span>
+              <br>才能在 WebPDA 看到。<br> <span class='very-red'>要放在WMS那個位置觸發?就在[審核]右方加[ASRS]</span>
+
+            </li>
+            <li>WebPDA, 選到要盤單的單, 以手工輸入取代 PDA  scan
+              <br>虛擬棧板號->會自動帶出儲位
+              <br>料號->會自動帶出品名 
+              <br>數量
+              <br><span class='very-red'>儲存過程(小仲)和代碼(Mark)調整了棧板號長度的查驗。<br>查看SP和試錯, 確認全域	145001[是否带有分隔符料号]必需設為0</span>
+                
+
+            </li>
+            <li><span class='very-red'>WebPDA scan 後需要生成一個入庫指令</span>,<a href='TAIWAY-DEV0925.html'>小仲指導要點 09/25</a></li>
+          </ul>
+
+
+
+
+        </li>
+
+      </ol>
+
+
+      </li>
+
+      </ol>
+
+    </div>
+    <!-- <hr>
+    <h2>WebPDA scan 後需要生成一個入庫指令</h2>
+    <h3>取用[dbo].[Proc_CreateRGVCommand] </h3>
+    <ul>
+      <li>判斷並只允許一次只能有一個入庫指令 #139
+<pre><code>
+  --当前是立库站点时，只允许产生一个未完成的立库入库命令
+  SELECT @PLCType = PLCType FROM dbo.BASE_CRANECONFIG WITH(NOLOCK) WHERE CRANEID = @P_LineId AND FLAG=0; 
+IF @PLCType = 'LK' BEGIN
+    --判断是否已存在未处理的入库命令
+  SELECT @P_Count = COUNT(*) FROM CMD_MST cmd WHERE cmd.LINEID = @P_LineId and cmd.StnNo = @P_SiteId and cmd.CmdSts in ('0');
+  IF @P_Count >0 BEGIN
+     SELECT TOP 1 @P_CurrentPalletcode = cmd.PACKAGENO FROM CMD_MST cmd where cmd.LINEID = @P_LineId and cmd.StnNo = @P_SiteId and cmd.CmdSts in ('0') order by cmd.TrnDate asc;
+     IF @P_CurrentPalletcode <> @P_PackageNO BEGIN
+         set @P_Msg ='当前入库栈板[' + @P_PackageNO + ']与准备入库栈板['+ @P_CurrentPalletcode +']不一致！';
+       EXEC Proc_CreatErrMessage '2', 'JOB', @P_LineId, @P_SiteId, '', 'IN', @P_Msg;
+           SELECT @P_Msg AS 'MSG';
+           return;
+     END
+  END
+END
+  
+SET @P_Msg = 'OK';
+
+</code></pre>
+
+      </li>
+      <li>寫入CMD_MST #778
+
+<pre><code>
+
+  INSERT  INTO CMD_MST
+  ( 
+    WmsTskId ,
+    CmdSno ,    --命令序號
+    CmdSts ,    --命令状态 0:未處理  1:執行中  7:命令完成待過帳  8:命令取消待過帳
+    PRT ,       --优先级  默认5
+    StnNo ,     --站别
+    CmdMode ,   --命令类型 1：入库  2：出库 3：判断 5：盘点
+    Loc ,       --储位                
+    LocSize ,   --储位种类
+    RodID ,     --盘元
+    Trace ,     --命令执行过程
+    TrnDate ,   --命令产生时间
+    LineId ,    --线别
+    CTICKETCODE ,--入库单号
+    PACKAGENO , --箱号
+    REMARK ,     --入库/出库/调拨/返库
+    CmdNO
+  )
+  VALUES  ( 
+    @P_WmsTaskId ,
+    @P_CmdSno ,
+    '0' ,
+    '4' ,
+    @P_LKSite ,
+    '1' ,
+    @P_LocXYZ ,
+    @P_CType ,
+    NULL ,
+    '0' ,
+    CONVERT(varchar(100), GETDATE(), 120) ,
+    @P_LKCrane ,
+    @P_CheckBillNum ,--循环盘点单号
+    @P_PackageNO ,
+    '盘点返库' ,
+    @P_CmdNo
+  );
+
+</code></pre>
+
+      </li>
+      <li>改變狀態 #844
+
+<pre><code>
+  UPDATE  dbo.STOCK_CHECKBILL_D 
+  SET cstatus = '2' 
+  WHERE palletcode = @P_PackageNO 
+    and cstatus = '1';
+
+
+
+  UPDATE  dbo.BASE_PACKAGESCAN SET STATUS = '2' WHERE packageno = @P_PackageNO AND STATUS = '1';
+
+
+</code></pre>
+
+      </li>
+
+
+    </ul> -->
+    
+    <hr>
+    <h2>進度 Review 09/25 10:00</h2>
+
+    <div style="font-size: 150%;margin-left: 32px;">
+      <ol>
+        <li>WCS(潘高) - 已實現。開平和盟立確認最後協議規格,是否需要調整?</li>
+        <li>虛擬棧板 (潘高) - 已實現。包含明細和整單生成。</li>
+        <li>料號+Rank 頁面 (Mark陳炳陵) - TODO 部分查詢UI</li>
+        <li>料號+Rank 報表(李舟蕾) - 開平已驗收。</li>
+        <li>登入頁面多語 (司薇薇) - 已完成。公告信息內容是否調整?</li>
+        <li>入庫 - 原功能。</li>
+        <li>出庫 - (小仲)已實現。</li>
+        <li>返庫 - (小仲)已實現。</li>
+        <li>盤點 - WebPDA代碼調試中</li>
+
+      </ol>
+
+    </div>
+    <hr>
+    <h2>進度 Review 09/23 10:00</h2>
+
+    <div style="font-size: 150%;margin-left: 32px;">
+      <ol>
+        <li>WCS(潘高) - 已實現。開平和盟立確認最後協議規格是否需要調整?</li>
+        <li>虛擬棧板 (潘高) - 已實現。包含明細和整單生成。</li>
+        <li>料號+Rank 頁面 (Mark陳炳陵) - 主要頁面已完成,待開平測試驗收。</li>
+        <li>料號+Rank 報表(李舟蕾) - 已完成,待開平測試驗收。</li>
+        <li>登入頁面多語 (司薇薇) - 已完成,待開平測試驗收。</li>
+        <li>入庫 - 原功能。</li>
+        <li>出庫 - (小仲)已實現。</li>
+        <li>返庫 - (小仲)已實現,(Mark陳炳陵)UI 返庫按鈕, TODO 扣帳。</li>
+        <li>盤點 - *** 是否要納入第一期?</li>
+
+      </ol>
+
+    </div>
+    <hr>
+    <h2>進度 Review 09/16 10:00</h2>
+
+    <div style="font-size: 150%;margin-left: 32px;">
+      <ol>
+        <li><a href='TAIWAY-DEV01.html'>WCS</a> (潘高) - 第一版先完成,等開平和盟立確認最後協議規格後,按階段測試調試。</li>
+        <li><a href='TAIWAY-DEV02.html'>虛擬棧板</a> (潘高) - 已實現,昨天18:00同潘高一起走入庫流程,一處可自動生成,另一處可能是調用SP不同還沒作用。</li>
+        <li><a href='TAIWAY-DEV03.html'>料號+Rank 頁面</a> (Mark陳炳陵) - 進行中,如補充說明。</li>
+        <li><a href='TAIWAY-DEV04.html'>料號+Rank 報表</a>(李舟蕾) - 進行中,如補充說明。</li>
+        <li><a href='TAIWAY-DEV05.html'>登入頁面多語</a> (司薇薇) - 已完成,等開平測試驗收。</li>
+        <li><a href='TAIWAY-DEV06.html'>手工扣帳 (...) </a> - 現況入庫可以在頁面使用現有的強制完成,出庫部分還沒有做到頁面,有SP可以使用。</li>
+
+      </ol>
+
+    </div>
+    <hr>
+    補充說明:
+    <ul>
+      <li>權限平台用戶信息同步到WMS的功能要打開(advice by 文生)。</li>
+      <li>權限平台數據庫TaiWei_Right 的 TABLE BASE_ORGANIZATION 把这里面几个雪龙相关的代码都改成台惟的(advice by 文生)。</li>
+      <li>權限平台用戶信息同步到WMS的SP要修改引用數據庫(advice by 小仲)。在云服務已更改(by Mark)/li>
+      <li>現有三種解決方法:1.在原EF框架新增新寫的VIEW TW_BASE_PART 2.(小仲)採用dapper 3.(小李)在返回到前端前,在返回集插入RANK。</li>
+    </ul>
+    <hr>
+    <div style='font-size: 125%;color:#666666'> === end C:/2020/projects/TAIWAY/ ===</div>
+    <br><br><br><br>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

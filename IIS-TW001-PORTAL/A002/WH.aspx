@@ -87,7 +87,7 @@
     <div class="container-fluid">
         <h1>
             <br />
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 儲位示意圖 Max(X,Y,Z) =(2,21,5)</h1>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href='./'>Index</a> -> 儲位示意圖 Max(X,Y,Z) =(2,21,5)</h1>
 
         <table class="gridtable">
             <tr>

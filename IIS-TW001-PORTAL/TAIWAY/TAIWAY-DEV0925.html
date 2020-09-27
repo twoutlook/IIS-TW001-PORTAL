@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>TAIWAY</title>
+  <style>
+    .brief {
+      background-color: lavender;
+      color: black;
+      font-size: 125%;
+      margin-left: 0px;
+    }
+
+    .very-red {
+      background-color: papayawhip;
+      color: red;
+      font-size: 110%;
+      margin-left: 0px;
+    }
+
+    .very-red-xl {
+      background-color: papayawhip;
+      color: red;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+    .title {
+      background-color: navy;
+      color: white;
+      font-size: 300%;
+      margin-left: 0px;
+    }
+
+    .note {
+      background-color: navy;
+      color: white;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+    .web-ref {
+      background-color: navy;
+      color: white;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+
+    .subtitle {
+      margin-top: 16px;
+      background-color: lightgoldenrodyellow;
+      color: black;
+      font-size: 200%;
+      margin-left: 0px;
+    }
+
+    .bug {
+      background-color: lightgoldenrodyellow;
+      color: red;
+      font-size: 135%;
+      margin-left: 8px;
+    }
+
+    .wms-page {
+      background-color: lightgray;
+      color: navy;
+      font-size: 125%;
+      margin-left: 8px;
+    }
+
+    .key-condition {
+      background-color: pink;
+      color: navy;
+      /*font-size: 125%;*/
+      margin-left: 8px;
+    }
+
+    table.gridtable {
+      font-family: verdana, arial, sans-serif;
+      font-size: 90%;
+      /*color:#333333;*/
+      color: black;
+      border-width: 1px;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      border-collapse: collapse;
+    }
+
+    table.gridtable th {
+      text-align: center;
+      align-content: center;
+      align-items: center;
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      background-color: #dedede;
+    }
+
+    table.gridtable td {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class='container'>
+    <div style='margin-top: 30px;'>
+      <h1><a href='http://210.71.231.5:8080/TAIWAY.html'>TAIWAY 台惟</a>
+      </h1>
+
+    </div>
+
+
+
+    <h2>WebPDA scan 後需要生成一個入庫指令,小仲指導要點 09/25 </h2>
+    <h3>取用[dbo].[Proc_CreateRGVCommand] </h3>
+    <ul>
+      <li>判斷並只允許一次只能有一個入庫指令 #139
+<pre><code>
+  --当前是立库站点时，只允许产生一个未完成的立库入库命令
+  SELECT @PLCType = PLCType FROM dbo.BASE_CRANECONFIG WITH(NOLOCK) WHERE CRANEID = @P_LineId AND FLAG=0; 
+IF @PLCType = 'LK' BEGIN
+    --判断是否已存在未处理的入库命令
+  SELECT @P_Count = COUNT(*) FROM CMD_MST cmd WHERE cmd.LINEID = @P_LineId and cmd.StnNo = @P_SiteId and cmd.CmdSts in ('0');
+  IF @P_Count >0 BEGIN
+     SELECT TOP 1 @P_CurrentPalletcode = cmd.PACKAGENO FROM CMD_MST cmd where cmd.LINEID = @P_LineId and cmd.StnNo = @P_SiteId and cmd.CmdSts in ('0') order by cmd.TrnDate asc;
+     IF @P_CurrentPalletcode <> @P_PackageNO BEGIN
+         set @P_Msg ='当前入库栈板[' + @P_PackageNO + ']与准备入库栈板['+ @P_CurrentPalletcode +']不一致！';
+       EXEC Proc_CreatErrMessage '2', 'JOB', @P_LineId, @P_SiteId, '', 'IN', @P_Msg;
+           SELECT @P_Msg AS 'MSG';
+           return;
+     END
+  END
+END
+  
+SET @P_Msg = 'OK';
+
+</code></pre>
+
+      </li>
+      <li>寫入CMD_MST #767
+
+<pre><code>
+  --生成ASRS命令
+  EXEC dbo.Proc_GetASRS_SEQ @P_WmsTaskId OUT;
+  --SELECT  @P_WmsTaskId = NEXT VALUE FOR dbo.ASRS_SEQ;
+  SELECT  @P_CmdNo = NEXT VALUE FOR dbo.ASRS_cmdno_SEQ;
+
+  SELECT  @P_CmdSno = NEXT VALUE FOR dbo.ASRS_SNO_SEQ;
+  SET @P_CmdSno = RIGHT('00000' + @P_CmdSno, 5);
+  SELECT  @P_LocXYZ = ( bc.cx + bc.cy + bc.cz )
+  FROM    BASE_CARGOSPACE bc
+  WHERE   bc.cpositioncode = @P_CpositionCode;
+  INSERT  INTO CMD_MST
+  ( 
+    WmsTskId ,
+    CmdSno ,    --命令序號
+    CmdSts ,    --命令状态 0:未處理  1:執行中  7:命令完成待過帳  8:命令取消待過帳
+    PRT ,       --优先级  默认5
+    StnNo ,     --站别
+    CmdMode ,   --命令类型 1：入库  2：出库 3：判断 5：盘点
+    Loc ,       --储位                
+    LocSize ,   --储位种类
+    RodID ,     --盘元
+    Trace ,     --命令执行过程
+    TrnDate ,   --命令产生时间
+    LineId ,    --线别
+    CTICKETCODE ,--入库单号
+    PACKAGENO , --箱号
+    REMARK ,     --入库/出库/调拨/返库
+    CmdNO
+  )
+  VALUES  ( 
+    @P_WmsTaskId ,
+    @P_CmdSno ,
+    '0' ,
+    '4' ,
+    @P_LKSite ,
+    '1' ,
+    @P_LocXYZ ,
+    @P_CType ,
+    NULL ,
+    '0' ,
+    CONVERT(varchar(100), GETDATE(), 120) ,
+    @P_LKCrane ,
+    @P_CheckBillNum ,--循环盘点单号
+    @P_PackageNO ,
+    '盘点返库' ,
+    @P_CmdNo
+  );
+
+</code></pre>
+
+      </li>
+      <li>改變狀態 #844
+
+<pre><code>
+  UPDATE  dbo.STOCK_CHECKBILL_D 
+  SET cstatus = '2' 
+  WHERE palletcode = @P_PackageNO 
+    and cstatus = '1';
+
+
+
+  UPDATE  dbo.BASE_PACKAGESCAN SET STATUS = '2' WHERE packageno = @P_PackageNO AND STATUS = '1';
+
+
+</code></pre>
+
+      </li>
+
+
+    </ul>
+    
+    <div style='font-size: 125%;color:#666666'> === end C:/2020/projects/TAIWAY/ ===</div>
+    <br><br><br><br>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

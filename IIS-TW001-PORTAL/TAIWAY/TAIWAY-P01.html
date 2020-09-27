@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>TAIWAY</title>
+  <style>
+    .brief {
+      background-color: lavender;
+      color: black;
+      font-size: 125%;
+      margin-left: 0px;
+    }
+
+    .very-red {
+      background-color: papayawhip;
+      color: red;
+      font-size: 110%;
+      margin-left: 0px;
+    }
+
+    .very-red-xl {
+      background-color: papayawhip;
+      color: red;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+    .title {
+      background-color: navy;
+      color: white;
+      font-size: 300%;
+      margin-left: 0px;
+    }
+
+    .note {
+      background-color: navy;
+      color: white;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+    .web-ref {
+      background-color: navy;
+      color: white;
+      font-size: 150%;
+      margin-left: 0px;
+    }
+
+
+    .subtitle {
+      margin-top: 16px;
+      background-color: lightgoldenrodyellow;
+      color: black;
+      font-size: 200%;
+      margin-left: 0px;
+    }
+
+    .bug {
+      background-color: lightgoldenrodyellow;
+      color: red;
+      font-size: 135%;
+      margin-left: 8px;
+    }
+
+    .wms-page {
+      background-color: lightgray;
+      color: navy;
+      font-size: 125%;
+      margin-left: 8px;
+    }
+
+    .key-condition {
+      background-color: pink;
+      color: navy;
+      /*font-size: 125%;*/
+      margin-left: 8px;
+    }
+
+    table.gridtable {
+      font-family: verdana, arial, sans-serif;
+      font-size: 90%;
+      /*color:#333333;*/
+      color: black;
+      border-width: 1px;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      border-collapse: collapse;
+    }
+
+    table.gridtable th {
+      text-align: center;
+      align-content: center;
+      align-items: center;
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      background-color: #dedede;
+    }
+
+    table.gridtable td {
+      border-width: 1px;
+      padding: 8px;
+      border-style: solid;
+      /*border-color: #666666;*/
+      border-color: #666666;
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class='container'>
+    <div style='margin-top: 30px;'>
+      <h1><a href='http://210.71.231.5:8080/TAIWAY.html'>TAIWAY 台惟</a>
+      </h1>
+
+    </div>
+
+
+
+    <hr>
+    <h2>Steps:</h2>
+    <div style="font-size: 150%;margin-left: 32px;">
+      <ol>
+<li>FrmBASE_PARTList</li>
+<li>asp:GridView ID="grdBASE_PART"</li>
+<li>GridBind</li>
+<li>BASE_PART</li>
+<li>TW_BASE_PART
+
+<ul>
+  <li>PART</li>
+  <li>RANK_FINAL</li>
+</ul>
+
+</li>
+<li>GridBind</li>
+<li>GridBind</li>
+<li>GridBind</li>
+
+
+
+      </ol>
+      </div>
+
+
+
+
+  <hr>
+  <pre>
+    1>------ Build started: Project: DreamTek.ASRS.Repository, Configuration: Release Any CPU ------
+2>------ Build started: Project: DreamTek.WMS.Repository, Configuration: Release Any CPU ------
+1>  DreamTek.ASRS.Repository -> C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.ASRS.Repository\bin\Release\DreamTek.ASRS.Repository.dll
+3>------ Build started: Project: DreamTek.ASRS.Business, Configuration: Release Any CPU ------
+3>  DreamTek.ASRS.Business -> C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.ASRS.Business\bin\Release\DreamTek.ASRS.Business.dll
+2>  DreamTek.WMS.Repository -> C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WMS.Repository\DreamTek.WMS.Repository\bin\Release\DreamTek.WMS.Repository.dll
+4>------ Build started: Project: DreamTek.ExternalService, Configuration: Release Any CPU ------
+4>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2084,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "log4net". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
+4>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2084,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
+5>------ Build started: Project: DreamTek.WebWMS.Web, Configuration: Debug Any CPU ------
+5>Could not get dependencies for project reference 'DreamTek.ExternalService'6>------ Skipped Publish: Project DreamTek.WebWMS.Web, Configuration: Debug Any CPU ------
+6> 
+========== Build: 4 succeeded, 1 failed, 2 up-to-date, 0 skipped ==========
+========== Publish: 0 succeeded, 0 failed, 1 skipped ==========
+
+  </pre>
+  <hr>
+  <pre>
+    1>------ Skipped Build: Project: DreamTek.ASRS.DAL, Configuration: Debug Any CPU ------
+1>Project not selected to build for this solution configuration 
+2>------ Skipped Build: Project: DreamTek.WMS.DAL, Configuration: Debug Any CPU ------
+2>Project not selected to build for this solution configuration 
+3>------ Skipped Build: Project: DreamTek.ASRS.Repository, Configuration: Debug Any CPU ------
+3>Project not selected to build for this solution configuration 
+4>------ Skipped Build: Project: DreamTek.WMS.Repository, Configuration: Debug Any CPU ------
+4>Project not selected to build for this solution configuration 
+5>------ Skipped Build: Project: DreamTek.ASRS.Business, Configuration: Debug Any CPU ------
+5>Project not selected to build for this solution configuration 
+6>------ Skipped Build: Project: DreamTek.ExternalService, Configuration: Debug Any CPU ------
+6>Project not selected to build for this solution configuration 
+7>------ Build started: Project: DreamTek.WebWMS.Web, Configuration: Debug Any CPU ------
+7>Validating Web Site
+7>Building directory '/Apps/ALLOCATE/'.
+7>Building directory '/Apps/'.
+7>Building directory '/Apps/OUT/'.
+7>Building directory '/Apps/BASE/'.
+7>(0): Build (web): c:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_WL_AREA.aspx(252): error CS0433: 类型“ASP.apps_base_showareadiv_ascx”同时存在于“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.mrbb805o.dll”和“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.vn-ostdq.dll”中
+7>
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmWAREHOUSEList.aspx.cs(27,15): warning CS0108: “BASE_FrmWAREHOUSEList.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit_D_C.aspx.cs(17,15): warning CS0108: “BASE_FrmBase_CraneConfigEdit_D_C.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit_D_C.aspx.cs(189,19): warning CS0108: “BASE_FrmBase_CraneConfigEdit_D_C.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_CLIENTList.aspx.cs(27,15): warning CS0108: “BASE_FrmBASE_CLIENTList.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_OPERATOR_AREAList.aspx.cs(19,15): warning CS0108: “BASE_FrmBASE_OPERATOR_AREAList.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_CLIENTEdit.aspx.cs(36,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_RGV_D.aspx.cs(14,15): warning CS0108: “Apps_BASE_FrmBase_RGV_D.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_RGV_D.aspx.cs(279,19): warning CS0108: “Apps_BASE_FrmBase_RGV_D.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_OPERATORList.aspx.cs(28,15): warning CS0108: “BASE_FrmBASE_OPERATORList.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmSetDB_ASRS.aspx.cs(64,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmSetDB_ASRS.aspx.cs(65,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBaseDocuReason_Edit.aspx.cs(13,15): warning CS0108: “BASE_FrmBaseDocuReason_Edit.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\frmBase_RGV_PCLADDR.aspx.cs(17,15): warning CS0108: “Apps_BASE_frmBase_RGV_PCLADDR.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit_D.aspx.cs(17,15): warning CS0108: “BASE_FrmBase_CraneConfigEdit_D.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit_D.aspx.cs(208,19): warning CS0108: “BASE_FrmBase_CraneConfigEdit_D.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit_D.aspx.cs(62,17): warning CS0252: 可能是无意的引用比较；若要获取值比较，请将左边的值强制转换为类型“string”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit_D.aspx.cs(66,17): warning CS0252: 可能是无意的引用比较；若要获取值比较，请将左边的值强制转换为类型“string”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_SJJ_D.aspx.cs(14,15): warning CS0108: “Apps_BASE_FrmBase_SJJ_D.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_SJJ_D.aspx.cs(200,19): warning CS0108: “Apps_BASE_FrmBase_SJJ_D.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBaseSJJ.aspx.cs(18,15): warning CS0108: “Apps_BASE_FrmBaseSJJ.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBaseSJJ.aspx.cs(106,19): warning CS0108: “Apps_BASE_FrmBaseSJJ.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\SubmitDate.aspx.cs(760,68): warning CS0472: 由于“decimal”类型的值永不等于“decimal?”类型的“null”，该表达式的结果始终为“true”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\SubmitDate.aspx.cs(806,17): warning CS0168: 声明了变量“strMessageIQUANTITY”，但从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CAR_PCLADDR.aspx.cs(16,15): warning CS0108: “Apps_BASE_FrmBase_CAR_PCLADDR.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_AGV.aspx.cs(14,15): warning CS0108: “Apps_BASE_FrmBase_AGV.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CAR.aspx.cs(17,15): warning CS0108: “Apps_BASE_FrmBase_CAR.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CAR.aspx.cs(106,19): warning CS0108: “Apps_BASE_FrmBase_CAR.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_InOutTypeStatusList.aspx.cs(159,17): warning CS0219: 变量“no1”已赋值，但其值从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_InOutTypeStatusList.aspx.cs(161,17): warning CS0219: 变量“no3”已赋值，但其值从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\ShowPARTDiv.ascx.cs(9,7): warning CS0105: “System.Collections.Generic”的 using 指令以前在此命名空间中出现过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_SSX.aspx.cs(17,15): warning CS0108: “Apps_BASE_FrmBase_SSX.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_SSX.aspx.cs(104,19): warning CS0108: “Apps_BASE_FrmBase_SSX.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit.aspx.cs(18,15): warning CS0108: “BASE_FrmBase_CraneConfigEdit.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit.aspx.cs(95,19): warning CS0108: “BASE_FrmBase_CraneConfigEdit.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\ShowBASE_CARGOSPACE_ByCinvcodeDiv.ascx.cs(110,19): warning CS0219: 变量“dtRowCount”已赋值，但其值从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_InOutTypeStatusEdit.aspx.cs(221,17): warning CS0219: 变量“sum”已赋值，但其值从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_PARTList.aspx.cs(26,15): warning CS0108: “BASE_FrmBASE_PARTList.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_AGV_D.aspx.cs(14,15): warning CS0108: “Apps_BASE_FrmBase_AGV_D.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_AGV_D.aspx.cs(146,19): warning CS0108: “Apps_BASE_FrmBase_AGV_D.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfigEdit_Trade.aspx.cs(13,15): warning CS0108: “Apps_BASE_FrmBase_CraneConfigEdit_Trade.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_SSX_D.aspx.cs(14,15): warning CS0108: “Apps_BASE_FrmBase_SSX_D.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_SSX_D.aspx.cs(210,19): warning CS0108: “Apps_BASE_FrmBase_SSX_D.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_AREAList.aspx.cs(27,15): warning CS0108: “FrmBASE_AREAList.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_VENDOREdit.aspx.cs(25,15): warning CS0108: “BASE_FrmBASE_VENDOREdit.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_VENDOREdit.aspx.cs(38,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_VENDOREdit.aspx.cs(480,30): warning CS0168: 声明了变量“E”，但从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CraneConfig.aspx.cs(13,15): warning CS0108: “BASE_FrmBASE_CraneConfig.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBaseDocuReason_List.aspx.cs(16,15): warning CS0108: “BASE_FrmBaseDocuReason_List.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBaseCONFIG_List.aspx.cs(13,15): warning CS0108: “FrmBaseCONFIG_List.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_PARAMETEREdit.aspx.cs(49,46): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CAR_D.aspx.cs(14,15): warning CS0108: “Apps_BASE_FrmBase_CAR_D.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_CAR_D.aspx.cs(280,19): warning CS0108: “Apps_BASE_FrmBase_CAR_D.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_RGV.aspx.cs(19,15): warning CS0108: “Apps_BASE_FrmBase_RGV.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBase_RGV.aspx.cs(108,19): warning CS0108: “Apps_BASE_FrmBase_RGV.KeyID”隐藏了继承的成员“WMSBasePage.KeyID”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_VENDORList.aspx.cs(27,15): warning CS0108: “BASE_FrmBASE_VENDORList.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_OPERATOREdit.aspx.cs(17,15): warning CS0108: “BASE_FrmBASE_OPERATOREdit.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_PARTEdit.aspx.cs(27,15): warning CS0108: “BASE_FrmBASE_PARTEdit.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_OPERATOREdit.aspx.cs(42,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_OPERATOREdit.aspx.cs(43,45): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_PARTEdit.aspx.cs(46,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_WL_AREA.aspx(252,27): error CS0433: 类型“ASP.apps_base_showareadiv_ascx”同时存在于“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.mrbb805o.dll”和“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.vn-ostdq.dll”中
+7>c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_52i1fzsm.4.cs(880,29): error CS0433: 类型“ASP.apps_base_showareadiv_ascx”同时存在于“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.mrbb805o.dll”和“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.vn-ostdq.dll”中
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\FrmBASE_OPERATOR_AREAPart.aspx(50,27): error CS0433: 类型“ASP.apps_base_showareadiv_ascx”同时存在于“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.mrbb805o.dll”和“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.vn-ostdq.dll”中
+7>c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_52i1fzsm.6.cs(612,29): error CS0433: 类型“ASP.apps_base_showareadiv_ascx”同时存在于“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.mrbb805o.dll”和“c:\Users\user\AppData\Local\Temp\Temporary ASP.NET Files\root\7e0cbc5a\aeb27585\App_Web_showareadiv.ascx.e222e99e.vn-ostdq.dll”中
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\BASE\ShowPARTDiv.ascx.cs(9,7): warning CS0105: “System.Collections.Generic”的 using 指令以前在此命名空间中出现过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutChangeAsnAudit.aspx.cs(14,15): warning CS0108: “Apps_OUT_FrmOutChangeAsnAudit.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutChangeAsnAudit.aspx.cs(25,42): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOUTASN_DEdit.aspx.cs(120,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOUT_TRANSPORTATIONPLAN_List.aspx.cs(14,15): warning CS0108: “FrmOUT_TRANSPORTATIONPLAN_List.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOUTBILLList.aspx.cs(46,53): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOUTASNList.aspx.cs(36,44): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutOrderEdit.aspx.cs(180,17): warning CS0114: “Apps_OUT_FrmOutOrderEdit.DataBind()”将隐藏继承的成员“System.Web.UI.Control.DataBind()”。若要使当前成员重写该实现，请添加关键字 override。否则，添加关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutChangeAsnEdit.aspx.cs(14,15): warning CS0108: “Apps_OUT_FrmOutChangeAsnEdit.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutOrderEdit.aspx.cs(71,46): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutChangeAsnEdit.aspx.cs(50,41): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutChangeAsnEdit.aspx.cs(51,39): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\OUT\FrmOutChangeAsnEdit.aspx.cs(52,42): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEEdit.aspx.cs(19,7): warning CS0105: “System.Data.SqlClient”的 using 指令以前在此命名空间中出现过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEEdit_D.aspx.cs(13,15): warning CS0108: “FrmALLOCATEEdit_D.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmAllocateCancel.aspx.cs(38,16): warning CS0108: “ALLOCATE_FrmAllocateCancel.PageSize”隐藏了继承的成员“WMSBasePage.PageSize”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmAllocateCancel.aspx.cs(42,16): warning CS0108: “ALLOCATE_FrmAllocateCancel.CurrendIndex”隐藏了继承的成员“WMSBasePage.CurrendIndex”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEEdit.aspx.cs(112,46): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEEdit.aspx.cs(1151,20): warning CS0168: 声明了变量“errmsg”，但从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEEdit_D.aspx.cs(38,47): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEEdit_D.aspx.cs(39,43): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmAllocateCancel.aspx.cs(303,26): warning CS0168: 声明了变量“E”，但从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATE_Audit_Mail.aspx.cs(13,15): warning CS0108: “FrmALLOCATE_Audit_Mail.context”隐藏了继承的成员“WMSBasePage.context”。如果是有意隐藏，请使用关键字 new。
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEList.aspx.cs(61,53): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEList.aspx.cs(62,45): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEList.aspx.cs(63,54): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEList.aspx.cs(64,44): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEList.aspx.cs(65,47): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATEList.aspx.cs(336,26): warning CS0168: 声明了变量“E”，但从未使用过
+7>C:\2020\projects\TAIWAY\0914V2\branches\Web\DreamTek.WebWMS.Web\Apps\ALLOCATE\FrmALLOCATE_Audit_Mail.aspx.cs(20,47): warning CS0618: “System.Web.UI.Page.GetPostBackEventReference(System.Web.UI.Control)”已过时:“The recommended alternative is ClientScript.GetPostBackEventReference. http://go.microsoft.com/fwlink/?linkid=14202”
+7>Validation Complete
+========== Build: 0 succeeded or up-to-date, 1 failed, 6 skipped ==========
+
+  </pre>
+  <div style='font-size: 125%;color:#666666'> === end  C:/2020/projects/TAIWAY/ ===</div>
+  <br><br><br><br>
+  </div>
+</div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
