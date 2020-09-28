@@ -116,11 +116,11 @@ WmsTskId
         <hr />
      
         
-          <h3>命令列表-最近十筆</h3>
+          <h3>命令列表-最近30筆</h3>
 
       
         <%=GetHtmlTableWhRec(@"
-SELECT TOP 10
+SELECT TOP 30
 WmsTskId
 ,CmdSno
 ,CmdSts
@@ -142,55 +142,6 @@ ORDER BY WmsTskId DESC
         
            <hr />
 
-        <h2>先確定是立庫</h2>
-        <p>SELECT @PLCType = PLCType FROM dbo.BASE_CRANECONFIG WITH(NOLOCK) WHERE CRANEID = @P_LineId AND FLAG=0; </p>
-
-        <%=GetHtmlTableWhRec(@"
-SELECT PLCType ,CRANEID,FLAG
-FROM dbo.BASE_CRANECONFIG WITH(NOLOCK) WHERE CRANEID ='1' AND FLAG=0;
-
-")%>
-        <hr />
-     
-        <h2>判断是否已存在未处理的入库命令</h2>
-
-
-        <p>SELECT @P_Count = COUNT(*) FROM CMD_MST cmd WHERE cmd.LINEID = @P_LineId and cmd.StnNo = @P_SiteId and cmd.CmdSts in ('0'); </p>
-<h3>1線1站</h3>
-        <%=GetHtmlTableWhRec(@"
-SELECT COUNT(*) 未处理的入库命令數 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo = 1 and cmd.CmdSts in ('0');
-
-")%>
-        <br />
-        <h3>1線2站</h3>
-
-      
-        <%=GetHtmlTableWhRec(@"
-SELECT COUNT(*) 未处理的入库命令數 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo = 2 and cmd.CmdSts in ('0');
-
-")%>
-
-             <br />
-        <h3>未处理的入库命令列表</h3>
-
-      
-        <%=GetHtmlTableWhRec(@"
-SELECT 
-WmsTskId
-,CmdSno
-,CmdSts
-
-,StnNo
-,CmdMode
-,Loc	
-, TrnDate
-,CMDNO
-,LINEID
-,CTICKETCODE
-,PACKAGENO
-,REMARK	 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo in ('1','2') and cmd.CmdSts in ('0');
-
-")%>
         
 
 
