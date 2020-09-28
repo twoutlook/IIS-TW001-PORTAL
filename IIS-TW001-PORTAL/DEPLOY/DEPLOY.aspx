@@ -90,6 +90,7 @@
             <a href='/index.htm'>首頁</a> ->部署</h1>
         <p>Win2016服務器 SQL2019 </p>
         <h3>實施步驟</h3>
+            <p>DB 及 IIS 全部取云服務器 http://210.71.231.5</p>
 
         <ul>
             <li>還原 [權限平台] DB</li>
@@ -97,6 +98,17 @@
             <li>發佈 [權限平台] IIS</li>
             <li>發佈 [WMS] IIS</li>
             <li>發佈 [WEBPDA] IIS</li>
+
+
+        </ul>
+          <h3>注意事項</h3>
+
+        <ul>
+            <li>IIS 所使用端口, 需要在防火牆打開。防火牆設置,保存即可,無需重啟任何服務。</li>
+            <li>還原 IIS 站點，只需將更新檔案寫入指定檔案夾,無需重啟任何服務。</li>
+            <li>數據庫還原時，如已有該庫, 要在Files 勾選 Relocate all files to folder。</li>
+            <li>IIS Web.config 需要更改新環境的數據庫連接設定。</li>
+         
 
 
         </ul>
