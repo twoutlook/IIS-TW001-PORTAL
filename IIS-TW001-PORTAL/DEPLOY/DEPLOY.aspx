@@ -107,10 +107,10 @@
         <h3>注意事項</h3>
 
         <ul>
-            <li>IIS 所使用端口, 需要在防火牆打開。防火牆設置,保存即可,無需重啟任何服務。</li>
-            <li>還原 IIS 站點，只需將更新檔案寫入指定檔案夾,無需重啟任何服務。</li>
-            <li>數據庫還原時，如已有該庫, 要在Files 勾選 Relocate all files to folder。</li>
-            <li>IIS Web.config 需要更改新環境的數據庫連接設定。</li>
+            <li>數據庫還原時，如已有該庫，要在Files 勾選 Relocate all files to folder。</li>
+            <li>IIS 所使用端口，需要在防火牆打開。防火牆設置，保存即可，無需重啟任何服務。</li>
+            <li>IIS 發佈站點時，只需將更新檔案寫入指定檔案夾，無需重啟任何服務。</li>
+            <li>IIS 站點的 Web.config 需要更新數據庫連接設定。</li>
 
 
 
