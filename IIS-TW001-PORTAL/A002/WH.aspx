@@ -87,10 +87,11 @@
     <div class="container-fluid">
         <h1>
             <br />
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href='./'>Index</a> -> 儲位示意圖 Max(X,Y,Z) =(2,21,5)</h1>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href='./'>系統信息管理</a> -> 儲位示意圖 Max(X,Y,Z) =(2,21,5)</h1>
 
         <table class="gridtable">
             <tr>
+                <a href="WH_LIST.aspx">WH_LIST.aspx</a>
                 <Td  style="border-width:0px">
 
                  </Td><th colspan="21">030庫M料架</th>

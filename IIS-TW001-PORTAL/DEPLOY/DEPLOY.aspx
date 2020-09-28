@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RULES.aspx.cs" Inherits="RULES" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DEPLOY.aspx.cs" Inherits="DEPLOY" %>
 
 <!DOCTYPE html>
 
@@ -84,22 +84,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container-fluid">
-          <h1>
+    <div class="container">
+        <h1>
             <br />
-         <a href='./'>系統信息管理</a> ->RULES</h1>
-     
+            <a href='/index.htm'>首頁</a> ->部署</h1>
+        <p>Win2016服務器 SQL2019 </p>
+        <h3>實施步驟</h3>
 
-        <h2>台惟案不管制棧板號不使用PDA</h2>
-        <p>台惟只有一線,兩個入出口,都可以進和出。</p>
-         <p>由於無法使用棧板號判斷各類型操作,無法智能出入庫,基於避免人工操作的各種疏失造成帳料不符,系統實施以下卡控。</p>
+        <ul>
+            <li>還原 [權限平台] DB</li>
+            <li>還原 [WMS] DB</li>
+            <li>發佈 [權限平台] IIS</li>
+            <li>發佈 [WMS] IIS</li>
+            <li>發佈 [WEBPDA] IIS</li>
 
-        <%=GetHtmlTableWhRec(@"
-SELECT ACTION,RULES,CMD,TRANS,REM FROM dbo.BASE_RULES ORDER BY SEQ;
 
-")%>
+        </ul>
 
-       NOTE: ***產生盤點出庫指令如何一個一個下發給WCS。必需前一個盤點完成後才能進行下一個。目前盤點是按統計平均分配到各站點, 必需調整SP。
+           <h3>流程演練</h3>
+
+        <ul>
+            <li>入庫</li>
+            <li>出庫</li>
+            <li>返庫</li>
+            <li>盤單</li>
+         
+
+
+        </ul>
+
+
+
+
 
 
         <div>

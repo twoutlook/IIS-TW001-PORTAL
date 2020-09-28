@@ -87,7 +87,7 @@
     <div class="container">
      <h1>
             <br />
-         <a href='./'>Index</a> -> PART</h1>
+         <a href='./'>系統信息管理</a> -> PART</h1>
 
 
 

@@ -87,7 +87,7 @@
     <div class="container-fluid">
           <h1>
             <br />
-         <a href='./'>Index</a> ->CMD</h1>
+         <a href='./'>系統信息管理</a> ->CMD</h1>
         <p>DB 數據字典 <a href="http://tmc.jungle123.com/hd/db/CMD_MST/">http://tmc.jungle123.com/hd/db/CMD_MST/</a> </p>
        <h3>命令列表-未處理</h3>
 
