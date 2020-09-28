@@ -219,6 +219,8 @@ Proc_InBillTOSTOCK_CURRENT</li>
         sb.Append("</tr>");
         return sb.ToString();
     }
+
+    // NOTE by Mark, 09/28
     public string GetHTMLHeaderWhRec(SqlDataReader reader)
     {
         var columns = new List<string>();
@@ -568,6 +570,8 @@ ORDER BY CELL
         //htmlStr += "<tr><td>" + Id + "</td><td>" + OwnerCode + "</td><td>" + OwnerName + "</td></tr>";
     }
 
+
+    // NOTE by Mark, 09/28
     private string GetHTMLDataWhRec(SqlDataReader reader)
     {
         StringBuilder sb = new StringBuilder("");
@@ -622,12 +626,24 @@ ORDER BY CELL
         //var htmlStr = "<tr><td>" + record[0] + "</td><td>" + record[1] + "</td><td>" + record[2] + "</td></tr>";
         return sb.ToString();
     }
+
+
+    // NOTE by Mark, 09/28  reader.GetName(i)
     private static string ReadSingleRowV2WhRec(IDataRecord record, int rec)
     {
         StringBuilder sb = new StringBuilder("<tr><th>" + rec + "</th>");
         for (int i = 0; i < record.FieldCount; i++)
         {
-            sb.AppendFormat("<td>{0}</td>", record[i]);
+            //sb.AppendFormat("<td>{0}</td>", record[i])
+            if (record.GetName(i) == "ID") // ID font family MONO
+            {
+                sb.AppendFormat("<td style=\"font-family:monospace\">{0}</td>", record[i], record.GetName(i));
+            }
+            else
+            {
+                sb.AppendFormat("<td>{0}</td>", record[i]);
+            }
+           
 
         }
         sb.Append("</tr>");
