@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CMD.aspx.cs" Inherits="CMD" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CMD - Copy.aspx.cs" Inherits="CMD" %>
 
 <!DOCTYPE html>
 
