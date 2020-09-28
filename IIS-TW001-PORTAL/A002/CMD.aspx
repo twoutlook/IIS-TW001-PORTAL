@@ -101,7 +101,7 @@ WmsTskId
 ,StnNo
 ,CmdMode
 ,Loc	
-,FORMAT(CAST([TrnDate] As DATETIME),'MM/dd HH:mm') TRANS
+,[TrnDate]
 ,CMDNO
 ,LINEID
 ,CTICKETCODE
@@ -117,7 +117,7 @@ WmsTskId
      
         
           <h3>命令列表-最近30筆</h3>
-
+ 
       
         <%=GetHtmlTableWhRec(@"
 SELECT TOP 30
@@ -128,7 +128,7 @@ WmsTskId
 ,StnNo
 ,CmdMode
 ,Loc	
-,FORMAT(CAST([TrnDate] As DATETIME),'MM/dd HH:mm') TRANS
+,[TrnDate]
 
 ,CMDNO
 ,LINEID
@@ -139,6 +139,8 @@ ORDER BY WmsTskId DESC
 ;
 
 ")%>
+
+        NOTE:        ,FORMAT(CAST([TrnDate] As DATETIME),'MM/dd HH:mm') TRANS  遇到不同格式的日期時間會出錯。
         
            <hr />
 
