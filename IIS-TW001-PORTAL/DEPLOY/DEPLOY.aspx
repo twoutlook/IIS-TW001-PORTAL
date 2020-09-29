@@ -94,23 +94,68 @@
 
 
         <ul>
-            <li>還原 [權限平台] DB</li>
-            <li>還原 [WMS] DB</li>
-            <li>發佈 [權限平台] IIS</li>
-            <li>發佈 [WMS] IIS</li>
-            <li>發佈 [WEBPDA] IIS</li>
-            <li>發佈 [AgvWebApi] IIS</li>
-              <li>安裝並啟動 [AgvWebApi] Win Service</li>
+            <li>還原 [權限平台] DB
+                 <ul>
+                     <li>TaiWei</li>
+                 </ul>
+
+            </li>
+
+            <li>還原 [WMS] DB
+                 <ul>
+                     <li>TaiWei_Right</li>
+                 </ul>
+
+
+            </li>
+            <li>發佈 [權限平台] IIS
+                  <ul>
+                      <li>\\192.168.88.3\iis\TaiWeiRight_24161</li>
+                      <li>沒有直接接觸源代碼，不build，不publish</li>
+                  </ul>
+            </li>
+            <li>發佈 [WMS] IIS
+                   <ul>
+                       <li>C:\GITHUB\IIS\IIS-TW001</li>
+                       <li>https://github.com/twoutlook/IIS-TW001</li>
+                   </ul>
+
+
+            </li>
+            <li>發佈 [WEBPDA] IIS
+                  <ul>
+                      <li>C:\GITHUB\IIS\IIS-TW001-WEBPDA</li>
+                      <li>https://github.com/twoutlook/IIS-TW001-WEBPDA</li>
+                  </ul>
+
+            </li>
+            <li>發佈 [AgvWebApi] IIS
+                  <ul>
+                      <li>C:\GITHUB\IIS\IIS-TW001-WEB-API</li>
+                      <li>https://github.com/twoutlook/IIS-TW001-WEB-API</li>
+
+                  </ul>
+            </li>
+            <li>安裝並啟動 [DreamTekService] Win Service
+                  <ul>
+                      <li>C:\GITHUB\IIS\IIS-TW001-WIN-SERVICE</li>
+                      <li>https://github.com/twoutlook/IIS-TW001-WIN-SERVICE</li>
+                  </ul>
+            </li>
 
 
         </ul>
+
+
+
         <p>NOTE: </p>
-         <ul>
+        <ul>
+            <li>除權限平台外，來源全部取自1號云服務器210.71.231.5或所述 github repo。</li>
             <li>任何 WMS 要下命令給 WCS 都是由  [AgvWebApi] Win Service 按配置頻率主動發起。</li>
             <li>按照 WMS 和 WCS 的通信協議，WCS
                 在完成任何立庫入出庫動作後，即調用 [AgvWebApi]，按照既有的程序，觸發 WMS 更新 ASRS 命令行的狀態。
             </li>
-        
+
 
         </ul>
         <hr />
@@ -121,7 +166,7 @@
             <li>IIS 所使用端口，需要在防火牆打開。防火牆設置，保存即可，無需重啟任何服務。</li>
             <li>IIS 發佈站點時，只需將更新檔案寫入指定檔案夾，無需重啟任何服務。</li>
             <li>IIS 站點的 Web.config 需要更新數據庫連接設定。</li>
-  <li>WMS 基礎資料->基礎資料導入，模板 物料信息.xls 在目前的云服務器需要改存為 物料信息.xlsx, 導入才有效果。</li>
+            <li>WMS 基礎資料->基礎資料導入，模板 物料信息.xls 在目前的云服務器需要改存為 物料信息.xlsx, 導入才有效果。</li>
 
 
 
@@ -218,22 +263,22 @@
                     <li>判斷系統狀態是否正常。</li>
                 </ul>
             </li>
-               <li>培訓及文檔
+            <li>培訓及文檔
                 <ul>
-                   
+
                     <li>編制培訓計畫。</li>
-                     <li>製作各式操作手冊, 含系統安裝、用戶使用手冊等。</li>
+                    <li>製作各式操作手冊, 含系統安裝、用戶使用手冊等。</li>
                     <li>實施培訓。</li>
                     <li>各式文檔維護, 含培訓記錄及問題記錄等。</li>
                 </ul>
             </li>
-             <li>現場
+            <li>現場
                 <ul>
                     <li>熟悉現場連接其它設備的規範。</li>
                     <li>瞭解用戶操作習慣。</li>
                     <li>第一時間操作權限內的狀況排除。</li>
                     <li>清楚描述問題並仿真在第二或第一云服務器重現。</li>
-                 
+
                 </ul>
             </li>
 
