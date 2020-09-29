@@ -99,10 +99,20 @@
             <li>發佈 [權限平台] IIS</li>
             <li>發佈 [WMS] IIS</li>
             <li>發佈 [WEBPDA] IIS</li>
+            <li>發佈 [AgvWebApi] IIS</li>
+              <li>安裝並啟動 [AgvWebApi] Win Service</li>
 
 
         </ul>
-        <p>NOTE: DB 及 IIS 全部取自第一台云服務器 210.71.231.5</p>
+        <p>NOTE: </p>
+         <ul>
+            <li>任何 WMS 要下命令給 WCS 都是由  [AgvWebApi] Win Service 按配置頻率主動發起。</li>
+            <li>按照 WMS 和 WCS 的通信協議，WCS
+                在完成任何立庫入出庫動作後，即調用 [AgvWebApi]，按照既有的程序，觸發 WMS 更新 ASRS 命令行的狀態。
+            </li>
+        
+
+        </ul>
         <hr />
         <h3>注意事項</h3>
 
