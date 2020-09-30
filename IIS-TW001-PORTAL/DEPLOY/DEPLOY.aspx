@@ -111,7 +111,7 @@
             <li>發佈 [權限平台] IIS
                   <ul>
                       <li>\\192.168.88.3\iis\TaiWeiRight_24161</li>
-                      <li>沒有直接接觸源代碼，不build，不publish</li>
+                      <li>沒有直接接觸源代碼，不build，不publish,直接取發佈在SZ局網的IIS檔案夾</li>
                   </ul>
             </li>
             <li>發佈 [WMS] IIS
@@ -140,6 +140,10 @@
                   <ul>
                       <li>C:\GITHUB\IIS\IIS-TW001-WIN-SERVICE</li>
                       <li>https://github.com/twoutlook/IIS-TW001-WIN-SERVICE</li>
+                      <li>services.msc</li>
+                      <li>DreamTek.WinService.exe.config => connectionStrings</li>
+                         <li>安装.bat=> DreamTek.WinService.exe 完整路徑</li>
+                         <li>卸载.bat=> DreamTek.WinService.exe 完整路徑 </li>
                   </ul>
             </li>
 
