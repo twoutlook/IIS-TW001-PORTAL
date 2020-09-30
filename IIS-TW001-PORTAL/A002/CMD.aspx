@@ -89,7 +89,7 @@
             <br />
          <a href='./'>系統信息管理</a> ->CMD</h1>
         <p>DB 數據字典 <a href="http://tmc.jungle123.com/hd/db/CMD_MST/">http://tmc.jungle123.com/hd/db/CMD_MST/</a> </p>
-       <h3>命令列表-未處理</h3>
+       <h3>命令列表-未處理 (09/30 14:00 包括狀態為0 和1)</h3>
 
       
         <%=GetHtmlTableWhRec(@"
@@ -102,15 +102,26 @@ WmsTskId
 ,CmdMode
 ,Loc	
 ,[TrnDate]
+,[EndTime]
 ,CMDNO
 ,LINEID
 ,CTICKETCODE
 ,PACKAGENO
-,REMARK	 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo in ('1','2') and cmd.CmdSts in ('0');
+,REMARK	 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo in ('1','2') and cmd.CmdSts in ('0','1');
 
 ")%>
         
+NOTE:狀態1是指進行中,12,22,52 可以继续下命令,狀態會保持為1
+            
+        <ul>
+            <li>12：入库任务下达主机命令</li>
+<li>22：出库任务下达主机命令 </li>
+<li>52：库对库任务下达主机命令</li>
 
+             
+             
+            
+        </ul>
 
 
         <hr />
@@ -129,7 +140,7 @@ WmsTskId
 ,CmdMode
 ,Loc	
 ,[TrnDate]
-
+,[EndTime]
 ,CMDNO
 ,LINEID
 ,CTICKETCODE
