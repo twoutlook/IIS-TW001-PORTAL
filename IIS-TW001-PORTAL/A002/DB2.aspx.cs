@@ -320,8 +320,17 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
         return ByteArrayToString(tmpHash);
     }
 
-    
-    public string GetHashJson()
+    public string GetIpValue()
+    {
+        var ipAdd = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+        if (string.IsNullOrEmpty(ipAdd))
+        {
+            ipAdd = Request.ServerVariables["REMOTE_ADDR"];
+        }
+        return ipAdd;
+    }
+        public string GetHashJson()
     {
         sSourceData = GetOneRowOneFieldByName();
         tmpSource = ASCIIEncoding.ASCII.GetBytes(sSourceData);
@@ -334,7 +343,8 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
 
         JObject rss =
             new JObject(
-                new JProperty(name, strHash));
+                new JProperty("IP", GetIpValue()),
+                 new JProperty(name, strHash));
 
         //   JValue date = new JValue(new DateTime(2000, 5, 23));
 
