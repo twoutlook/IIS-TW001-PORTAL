@@ -96,14 +96,14 @@
         <ul>
             <li>還原 [權限平台] DB
                  <ul>
-                     <li>TaiWei</li>
+                     <li>TaiWei_Right</li>
                  </ul>
 
             </li>
 
             <li>還原 [WMS] DB
                  <ul>
-                     <li>TaiWei_Right</li>
+                     <li>TaiWei</li>
                  </ul>
 
 
@@ -118,6 +118,8 @@
                    <ul>
                        <li>C:\GITHUB\IIS\IIS-TW001</li>
                        <li>https://github.com/twoutlook/IIS-TW001</li>
+                        <li>config:兩個數據庫連接connectionString, 一個權限平台IP和端口
+</li>
                    </ul>
 
 
@@ -133,7 +135,8 @@
                   <ul>
                       <li>C:\GITHUB\IIS\IIS-TW001-WEB-API</li>
                       <li>https://github.com/twoutlook/IIS-TW001-WEB-API</li>
-
+                                          <li>config:兩個數據庫連接connectionString
+</li>
                   </ul>
             </li>
             <li>安裝並啟動 [DreamTekService] Win Service
