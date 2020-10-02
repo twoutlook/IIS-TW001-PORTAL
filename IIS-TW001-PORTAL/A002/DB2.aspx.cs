@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using System.Security.Cryptography;
+using Newtonsoft.Json.Linq;
 
 //https://docs.microsoft.com/en-us/troubleshoot/dotnet/csharp/compute-hash-values
 // TO HASH
@@ -317,6 +318,33 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
         //Compute hash based on source data.
         tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource);
         return ByteArrayToString(tmpHash);
+    }
+
+    
+    public string GetHashJson()
+    {
+        sSourceData = GetOneRowOneFieldByName();
+        tmpSource = ASCIIEncoding.ASCII.GetBytes(sSourceData);
+        //Compute hash based on source data.
+        tmpHash = new MD5CryptoServiceProvider().ComputeHash(tmpSource);
+        string strHash = ByteArrayToString(tmpHash);
+        //   Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+        JArray array = new JArray();
+        JValue text = new JValue(strHash);
+
+        JObject rss =
+            new JObject(
+                new JProperty(name, strHash));
+
+        //   JValue date = new JValue(new DateTime(2000, 5, 23));
+
+        array.Add(text);
+     //   array.Add(date);
+
+        string json = array.ToString();
+
+        //return json;
+        return rss.ToString();
     }
     public string GetOneRowOneFieldByName()
     {

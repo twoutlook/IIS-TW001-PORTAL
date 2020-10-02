@@ -91,6 +91,7 @@
         </form>
         <h1><br />  <a href='./DB.aspx'>DB</a> ->  <%=GetName()%></h1>
          <p style="font-size:125%; font-family:monospace"><%=GetHash()%></p>
+            <p style="font-size:125%; font-family:monospace"><%=GetHashJson()%></p>
         <hr />
         
         <pre><code>
