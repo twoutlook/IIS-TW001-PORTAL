@@ -482,12 +482,46 @@ ORDER BY CELL
         return GetHtmlTableWhRec(strSQL);
 
     }
+
+
+    //SELECT @P_Count = COUNT(*)
+
+    //    FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+
+    //    INNER JOIN STOCK_CHECKBILL sc WITH(NOLOCK) ON sc.id = scd.id
+    //    WHERE sc.cstatus in ('1','6')
+
+    //      AND EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '2' and cmd.PACKAGENO = scd.palletcode)
+
+    //      AND NOT EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '1' and cmd.PACKAGENO = scd.palletcode);
+    public string Rule2()
+    {
+        //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
+        //FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+        //WHERE scd.cpositioncode = @P_CpositionCode
+        //  and scd.id = @P_CheckBill_Id; ", TICKET);
+        string strSQL = String.Format(@"
+
+  SELECT TOP 10 *
+        FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+
+        INNER JOIN STOCK_CHECKBILL sc WITH(NOLOCK) ON sc.id = scd.id
+        WHERE sc.cstatus in ('1','6')
+
+          AND EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '2' and cmd.PACKAGENO = scd.palletcode)
+
+          AND NOT EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '1' and cmd.PACKAGENO = scd.palletcode);
+");
+        return GetHtmlTableWhRec(strSQL);
+
+    }
+
     public string Step2()
     {
-  //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
-		//FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
-		//WHERE scd.cpositioncode = @P_CpositionCode
-		//  and scd.id = @P_CheckBill_Id; ", TICKET);
+        //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
+        //FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+        //WHERE scd.cpositioncode = @P_CpositionCode
+        //  and scd.id = @P_CheckBill_Id; ", TICKET);
         string strSQL = String.Format(@"SELECT  scd.cpositioncode CELL,scd.palletcode PALLET, * 
 		FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
 		WHERE  scd.id = '{0}'; ", Get_TICKET_ID());
@@ -551,7 +585,7 @@ ORDER BY CELL
         sb.Append(GetHTMLDataWhRec(reader));
         sb.Append("</table>");
 
-             sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
         thisConnection.Close();
         return sb.ToString();
     }
