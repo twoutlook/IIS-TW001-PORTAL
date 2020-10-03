@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CMD.aspx.cs" Inherits="CMD" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CMD2.aspx.cs" Inherits="CMD2" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,6 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet"
-    <video src="video/0917.mp4" controls="controls" />
         href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
 
@@ -90,74 +89,20 @@
             <br />
          <a href='./'>系統信息管理</a> ->CMD</h1>
         <p>DB 數據字典 <a href="http://tmc.jungle123.com/hd/db/CMD_MST/">http://tmc.jungle123.com/hd/db/CMD_MST/</a> </p>
-       <h3>命令列表-未處理 (09/30 14:00 包括狀態為0 和1)</h3>
+       <h3>命令列表-最近</h3>
 
       
         <%=GetHtmlTableWhRec(@"
-SELECT 
-WmsTskId
-,CmdSno
-,CmdSts
 
-,StnNo
-,CmdMode
-,Loc	
-,[TrnDate]
-,[EndTime]
-,CMDNO
-,LINEID
-,CTICKETCODE
-,PACKAGENO
-,REMARK	 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo in ('1','2') and cmd.CmdSts in ('0','1');
+	SELECT wmstskID CMD_ID,CTICKETCODE TICKET, PACKAGENO PALLET, LINEID L,LOC CELL,TrnDate TRANS,EndTime DONE,BILLINGSTATUS 扣賬,REMARK,*
+		FROM CMD_MST cmd WITH(NOLOCK)
+		--WHERE cmd.CmdMode = '2'
 
+		  --and cmd.CTICKETCODE = @P_CticketCode
+		  --and cmd.PACKAGENO = @P_PalletCode;
+		order by TrnDate desc
 ")%>
         
-NOTE:狀態1是指進行中,12,22,52 可以继续下命令,狀態會保持為1
-            
-        <ul>
-            <li>12：入库任务下达主机命令</li>
-<li>22：出库任务下达主机命令 </li>
-<li>52：库对库任务下达主机命令</li>
-
-             
-             
-            
-        </ul>
-
-
-        <hr />
-     
-        
-          <h3>命令列表-最近30筆</h3>
- 
-      
-        <%=GetHtmlTableWhRec(@"
-SELECT TOP 30
-WmsTskId
-,CmdSno
-,CmdSts
-
-,StnNo
-,CmdMode
-,Loc	
-,[TrnDate]
-,[EndTime]
-,CMDNO
-,LINEID
-,CTICKETCODE
-,PACKAGENO
-,REMARK	 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo in ('1','2') 
-ORDER BY WmsTskId DESC
-;
-
-")%>
-
-        NOTE:        ,FORMAT(CAST([TrnDate] As DATETIME),'MM/dd HH:mm') TRANS  遇到不同格式的日期時間會出錯。
-        
-           <hr />
-
-        
-
 
 
         <div>
