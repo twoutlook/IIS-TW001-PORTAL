@@ -484,16 +484,31 @@ ORDER BY CELL
     }
 
 
-    //SELECT @P_Count = COUNT(*)
+    
 
-    //    FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+    public string Rule3()
+    {
+        //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
+        //FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+        //WHERE scd.cpositioncode = @P_CpositionCode
+        //  and scd.id = @P_CheckBill_Id; ", TICKET);
+        string strSQL = String.Format(@"
 
-    //    INNER JOIN STOCK_CHECKBILL sc WITH(NOLOCK) ON sc.id = scd.id
-    //    WHERE sc.cstatus in ('1','6')
+ SELECT *
 
-    //      AND EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '2' and cmd.PACKAGENO = scd.palletcode)
+        FROM STOCK_CURRENT sc WITH(NOLOCK)
 
-    //      AND NOT EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '1' and cmd.PACKAGENO = scd.palletcode);
+        WHERE sc.cpositioncode in (
+            SELECT ba.handover_cargo FROM BASE_AREA ba WITH(NOLOCK)
+            WHERE 1=1
+		  )
+
+          AND sc.iqty >0;
+");
+        return GetHtmlTableWhRec(strSQL);
+
+    }
+
     public string Rule2()
     {
         //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
