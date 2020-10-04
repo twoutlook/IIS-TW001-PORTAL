@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CYCLE.aspx.cs" Inherits="CYCLE" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NOTE.aspx.cs" Inherits="OUT" %>
 
 <!DOCTYPE html>
 
@@ -84,44 +84,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container-fluid">
-          <h1>
+    <div class="container">
+        <h1>
             <br />
-         <a href='./'>Index</a> ->盤點-出庫</h1>
-         <h3>循环盘点列表</h3>
+        NOTE</h1>
 
-      
-    
-
-          <h3>狀態為 1 或 6</h3>
-        
-        <%=GetHtmlTableWhRec(@"
-
-SELECT sc.cstatus STAT, sc.cticketcode TICKET
-,sc.checktype CHK,sc.worktype WRK
-,FORMAT(sc.dcirclecheckbegindate,'yyyy-MM-dd') START_DT
-,FORMAT(sc.dcirclecheckenddate,'yyyy-MM-dd') END_DT
-,scd.cpositioncode CELL,scd.palletcode PALLET ,scd.cinvcode PART, scd.iquantity QTY 
-
-FROM STOCK_CHECKBILL sc WITH(NOLOCK) 
-INNER JOIN STOCK_CHECKBILL_D scd on sc.id = scd.id 
-WHERE sc.cstatus in ('1','6') ORDER BY sc.cticketcode DESC, scd.cpositioncode
-
-")%>
-        
-
-      
-        <hr />
-     NOTE:http://tmc.jungle123.com/hd/db/STOCK_CHECKBILL/
+       
         <ul>
-            <li>CHK checktype 	盘点类型（0:物理，1:循环，2:抽盘）</li>
-<li>WRK worktype 作业方式</li>
-
+            <li></li>
         </ul>
-
-
-      
-
         <div>
             <hr />
             頁面更新時間: <%=showTime()%>
