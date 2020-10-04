@@ -9,28 +9,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class CELL : System.Web.UI.Page
+public  class MARK 
 {
     public string cell_num = "";
-    public string CUST = "";
-    public string showTime()
-    {
-        return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-    }
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        cell_num = Request.QueryString["CELL"];
-        CUST = Request.QueryString["CUST"];
-    }
 
-    public string showCellNum()
+    public string TICKET = ""; //盤點單號
+    public string TICKET_ID = "";//盤點主檔ID
+
+
+    public string showCell()
     {
         return cell_num;
-    }
-
-    public string showCUST()
-    {
-        return CUST;
     }
     //https://www.it1352.com/1205195.html
     public static string DBConnection()
@@ -89,6 +78,7 @@ ELSE '未設定' END AS strStatus
     {
         return "<span class='" + strClass + "'>" + data + "</span>";
     }
+
 
     public string GetSpanClassKeyCondition(string data)
     {
@@ -265,21 +255,324 @@ Proc_InBillTOSTOCK_CURRENT</li>
         return sb.ToString();
     }
 
-    public string ShowCell()
+    // 根據台惟儲位先做示意圖
+    public string GetHtmlTableTW(string strSQL)
     {
-        string strSQL = "SELECT cinvcode 料號,	cinvname 品名,qty 數量 ,palletcode 棧板號 FROM R09_STOCK WHERE CELL = '" + cell_num + "'";
-        return GetHtmlTableWhRec(strSQL);
+        // string htmlStr = "";
+        StringBuilder sb = new StringBuilder("xxx<table class='gridtable'>");
+        string dbConnection = System.Configuration.ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+        SqlConnection thisConnection = new SqlConnection(dbConnection);
+        SqlCommand thisCommand = thisConnection.CreateCommand();
+        //        thisCommand.CommandText = "SELECT * from V_A001";
+        thisCommand.CommandText = strSQL;
+
+        thisConnection.Open();
+        SqlDataReader reader = thisCommand.ExecuteReader();
+
+        //  sb.Append(GetHTMLHeaderWhRec(reader));
+
+        sb.Append(GetHTMLDataTW(reader));
+        sb.Append("</table>");
+
+        //     sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        thisConnection.Close();
+        return sb.ToString();
+    }
+    public string showTime()
+    {
+        return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+    }
+    public string GetTW_WH_Tr(string strSQL)
+    {
+        // string htmlStr = "";
+        //        StringBuilder sb = new StringBuilder("xxx<table class='gridtable'>");
+        StringBuilder sb = new StringBuilder("");
+
+        string dbConnection = System.Configuration.ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+        SqlConnection thisConnection = new SqlConnection(dbConnection);
+        SqlCommand thisCommand = thisConnection.CreateCommand();
+        //        thisCommand.CommandText = "SELECT * from V_A001";
+        thisCommand.CommandText = strSQL;
+
+        thisConnection.Open();
+        SqlDataReader reader = thisCommand.ExecuteReader();
+
+        //  sb.Append(GetHTMLHeaderWhRec(reader));
+
+        sb.Append(GetHTMLDataTW(reader));
+        //sb.Append("</table>");
+
+        sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        thisConnection.Close();
+        return sb.ToString();
+    }
+    public string GetTW_WH_Tr_X_Z(string strSQL, int X, int Z, string strPick)
+    {
+        // string htmlStr = "";
+        //        StringBuilder sb = new StringBuilder("xxx<table class='gridtable'>");
+        StringBuilder sb = new StringBuilder("");
+
+        string dbConnection = System.Configuration.ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+        SqlConnection thisConnection = new SqlConnection(dbConnection);
+        SqlCommand thisCommand = thisConnection.CreateCommand();
+        //        thisCommand.CommandText = "SELECT * from V_A001";
+        thisCommand.CommandText = strSQL;
+
+        thisConnection.Open();
+        SqlDataReader reader = thisCommand.ExecuteReader();
+
+        //  sb.Append(GetHTMLHeaderWhRec(reader));
+
+        //   sb.Append(GetHTMLDataTW(reader));
+
+        // StringBuilder sb = new StringBuilder("<tr>");
+        // sb.Append(String.Format("<tr><th>X={0}</th>", X));
+        sb.Append("<tr>");
+        sb.Append(strPick);
+
+        //int k = 0;
+        while (reader.Read())
+        {
+            //k++;
+            string Y = reader[0].ToString();
+            string P = reader[1].ToString();
+            string CELL = reader[2].ToString();
+
+            string Pre = "M";
+            if (X == 2)
+            {
+                Pre = "N";
+            }
+            if (Y.Length == 1)
+            {
+                Y = "0" + Y;
+            }
+
+
+            string CUST = Pre + Z + Y;
+            if (P.Length > 0)
+            {
+                if (P.Length > 10)// 	20200915180338447, 潘高做的虛擬儲位 CECACA
+                {
+                    sb.AppendFormat("<td  style='background-Color:#CECECE'><b><a href='CELL.aspx?CUST={0}&CELL={1}'>{0}</a></b></td>", CUST, CELL);
+                }
+                else
+                {
+                    sb.AppendFormat("<td  style='background-Color:#F7F7C0'><a href='CELL.aspx?CUST={0}&CELL={1}'>{0}</a></td>", CUST, CELL);
+                }
+
+            }
+            else
+            {
+                sb.AppendFormat("<td>{0}</td>", CUST);
+            }
+
+
+        }
+        //        sb.Append("<th>Z=1</th></tr>");
+        if (X == 1)
+        {
+
+            //sb.Append(String.Format("<th rowspan='2'>Z={0}</th>", Z));
+        }
+
+        sb.Append("</tr>");
+
+
+
+        //sb.Append("</table>");
+
+        //  sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        thisConnection.Close();
+        return sb.ToString();
     }
 
-    public string ShowCell2()
+    public string GetTW_WH(int L)
     {
-        string strSQL = String.Format(@"SELECT PART 料號,	RANK_FINAL [批/序號(RANK)],cinvname 品名,qty 數量 , palletcode 棧板號, PART_FULL 數據庫實際料號 
-FROM R09_STOCK T1
-INNER JOIN TW_BASE_PART T2
-ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
-            , cell_num);
-        return GetHtmlTableWhRec(strSQL);
+        string strSQL = @"
+  SELECT CONCAT('<a href=''CELL.aspx?CELL=',CELL,'''>',CELL,'</a>') AS 儲位 ,  P 棧板 FROM TW_WH03
+WHERE 1=1
+AND Z=1 
+ORDER BY CELL
+";
+        return GetTW_WH_Tr(strSQL);
     }
+
+    public string GetTW_WH_L_Z_X(int L, int Z, int X)
+    {
+        //            string strSQL = String.Format(@"
+        //  SELECT CONCAT('<a href=''CELL.aspx?CELL=',CELL,'''>',CELL,'</a>') AS 儲位 ,  P 棧板 FROM TW_WH03
+        //WHERE 1=1
+        //AND L={0}
+        //AND Z={1}
+        //AND X={2}
+
+        //ORDER BY CELL
+        //", L,Z,X);
+
+
+        string strSQL = String.Format(@"
+  SELECT Y ,  P 棧板,CELL FROM TW_WH03
+WHERE 1=1
+AND L={0}
+AND Z={1}
+AND X={2}
+AND LEN(CELL) =10
+AND SUBSTRING(CELL,3,1)='-'
+ORDER BY CELL
+", L, Z, X);
+        string strPick = "";
+
+        if (Z == 1)
+        {
+
+            //          strPick = String.Format("<TH  width:20% >撿料站{0}</TH>", X);
+
+        }
+        else
+        {
+            //       strPick = "<Td style=\"border-width:0px;\"></Td>";
+        }
+        string strX = "0" + X;
+        string strZ = "0" + Z;
+
+        strPick = String.Format("<Th style='font-size:85%; color:gray'>01-{0}___{1}</Th>", strX, strZ);
+
+        return GetTW_WH_Tr_X_Z(strSQL, X, Z, strPick);
+        // string htmlStr = "";
+        StringBuilder sb = new StringBuilder("xxx<table class='gridtable'>");
+        string dbConnection = System.Configuration.ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+        SqlConnection thisConnection = new SqlConnection(dbConnection);
+        SqlCommand thisCommand = thisConnection.CreateCommand();
+        //        thisCommand.CommandText = "SELECT * from V_A001";
+        thisCommand.CommandText = strSQL;
+
+        thisConnection.Open();
+        SqlDataReader reader = thisCommand.ExecuteReader();
+
+        //  sb.Append(GetHTMLHeaderWhRec(reader));
+
+        sb.Append(GetHTMLDataTW(reader));
+        sb.Append("</table>");
+
+        //     sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        thisConnection.Close();
+        return sb.ToString();
+    }
+
+    public string Step1()
+    {
+        string strSQL = String.Format(@"SELECT sc.cstatus STATUS,
+
+               sc.cticketcode TICKET, *
+
+        FROM STOCK_CHECKBILL sc WITH(NOLOCK)
+
+        WHERE sc.cticketcode = '{0}'; ", TICKET);
+        return GetHtmlTableWhRec(strSQL);
+
+    }
+
+
+    
+
+    public string Rule3()
+    {
+        //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
+        //FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+        //WHERE scd.cpositioncode = @P_CpositionCode
+        //  and scd.id = @P_CheckBill_Id; ", TICKET);
+        string strSQL = String.Format(@"
+
+ SELECT *
+
+        FROM STOCK_CURRENT sc WITH(NOLOCK)
+
+        WHERE sc.cpositioncode in (
+            SELECT ba.handover_cargo FROM BASE_AREA ba WITH(NOLOCK)
+            WHERE 1=1
+		  )
+
+          AND sc.iqty >0;
+");
+        return GetHtmlTableWhRec(strSQL);
+
+    }
+
+    public string Rule2()
+    {
+        //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
+        //FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+        //WHERE scd.cpositioncode = @P_CpositionCode
+        //  and scd.id = @P_CheckBill_Id; ", TICKET);
+        string strSQL = String.Format(@"
+
+  SELECT TOP 10 *
+        FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+
+        INNER JOIN STOCK_CHECKBILL sc WITH(NOLOCK) ON sc.id = scd.id
+        WHERE sc.cstatus in ('1','6')
+
+          AND EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '2' and cmd.PACKAGENO = scd.palletcode)
+
+          AND NOT EXISTS(SELECT 1 FROM CMD_MST cmd WITH(NOLOCK) WHERE cmd.CTICKETCODE = sc.cticketcode AND cmd.CmdMode = '1' and cmd.PACKAGENO = scd.palletcode);
+");
+        return GetHtmlTableWhRec(strSQL);
+
+    }
+
+    public string Step2()
+    {
+        //      string strSQL = String.Format(@"SELECT  scd.palletcode PALLET, * 
+        //FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+        //WHERE scd.cpositioncode = @P_CpositionCode
+        //  and scd.id = @P_CheckBill_Id; ", TICKET);
+        string strSQL = String.Format(@"SELECT  scd.cpositioncode CELL,scd.palletcode PALLET, * 
+		FROM STOCK_CHECKBILL_D scd WITH(NOLOCK)
+		WHERE  scd.id = '{0}'; ", Get_TICKET_ID());
+        return GetHtmlTableWhRec(strSQL);
+
+    }
+
+    public string Get_TICKET_ID()
+    {
+        string strSQL = String.Format(@"SELECT sc.cstatus STATUS,
+
+               sc.cticketcode TICKET, *
+
+        FROM STOCK_CHECKBILL sc WITH(NOLOCK)
+
+        WHERE sc.cticketcode = '{0}'; ", TICKET);
+
+        string dbConnection = System.Configuration.ConfigurationManager.ConnectionStrings["connstring"].ConnectionString;
+        SqlConnection thisConnection = new SqlConnection(dbConnection);
+        SqlCommand thisCommand = thisConnection.CreateCommand();
+        //        thisCommand.CommandText = "SELECT * from V_A001";
+        StringBuilder sb = new StringBuilder("");
+        thisCommand.CommandText = strSQL;
+
+        thisConnection.Open();
+        SqlDataReader reader = thisCommand.ExecuteReader();
+
+        int k = 0;
+        while (reader.Read())
+        {
+            k++;
+            //sb.Append(ReadSingleRowV2WhRec((IDataRecord)reader, k));
+            sb.Append(ReadSingleRowWhFieldName((IDataRecord)reader, "id"));
+
+        }
+
+
+
+
+        //     sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        thisConnection.Close();
+        return sb.ToString();
+
+    }
+
+
     public string GetHtmlTableWhRec(string strSQL)
     {
         // string htmlStr = "";
@@ -297,7 +590,7 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
         sb.Append(GetHTMLDataWhRec(reader));
         sb.Append("</table>");
 
-        //      sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
         thisConnection.Close();
         return sb.ToString();
     }
@@ -390,7 +683,6 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
         //htmlStr += "<tr><td>" + Id + "</td><td>" + OwnerCode + "</td><td>" + OwnerName + "</td></tr>";
     }
 
-
     private string GetHTMLDataWhRec(SqlDataReader reader)
     {
         StringBuilder sb = new StringBuilder("");
@@ -401,12 +693,22 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
             sb.Append(ReadSingleRowV2WhRec((IDataRecord)reader, k));
         }
         return sb.ToString();
-        //string Id = reader.GetString(0);
-        //string OwnerCode = reader.GetString(1);
-        //string OwnerName = reader.GetString(2);
-        //htmlStr += "<tr><td>" + Id + "</td><td>" + OwnerCode + "</td><td>" + OwnerName + "</td></tr>";
     }
 
+    private string GetHTMLDataTW(SqlDataReader reader)
+    {
+        StringBuilder sb = new StringBuilder("<tr>");
+        int k = 0;
+        while (reader.Read())
+        {
+            k++;
+
+            sb.AppendFormat("<td>{0}</td>", reader[0]);
+
+        }
+        sb.Append("</tr>");
+        return sb.ToString();
+    }
     // DOING
     private string GetWhOneRowData(SqlDataReader reader)
     {
@@ -448,6 +750,33 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
         return sb.ToString();
     }
 
+    private static string ReadSingleRowWhFieldName(IDataRecord record, string FieldName)
+    {
+        StringBuilder sb = new StringBuilder("");
+        for (int i = 0; i < record.FieldCount; i++)
+        {
+            if (record.GetName(i) == FieldName)
+            {
+                sb.AppendFormat("{0}", record[i]);
+            }
+
+
+        }
+        return sb.ToString();
+    }
+
+    private static string ReadSingleRowTW(IDataRecord record, int rec)
+    {
+        StringBuilder sb = new StringBuilder("<tr><th>xxx" + rec + "</th>");
+        for (int i = 0; i < record.FieldCount; i++)
+        {
+            sb.AppendFormat("<td>{0}</td>", record[i]);
+
+        }
+        sb.Append("</tr>");
+        //var htmlStr = "<tr><td>" + record[0] + "</td><td>" + record[1] + "</td><td>" + record[2] + "</td></tr>";
+        return sb.ToString();
+    }
 
     private static string ReadSingleRowV3Wh(IDataRecord record)
     {
