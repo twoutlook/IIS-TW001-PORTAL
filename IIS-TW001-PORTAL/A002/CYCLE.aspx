@@ -99,6 +99,7 @@
 
 		SELECT sc.cstatus STAT,
 		       sc.cticketcode TICKET,scd.cpositioncode CELL,scd.palletcode PALLET
+,scd.cinvcode PART, scd.iquantity QTY 
 		FROM STOCK_CHECKBILL sc WITH(NOLOCK)
 
 		INNER JOIN STOCK_CHECKBILL_D scd
