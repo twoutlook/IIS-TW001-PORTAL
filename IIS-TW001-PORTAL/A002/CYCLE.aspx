@@ -98,7 +98,7 @@
         <%=GetHtmlTableWhRec(@"
 
 		SELECT sc.cstatus STAT,
-		       sc.cticketcode TICKET,scd.cpositioncode CELL,scd.palletcode PALLET,*
+		       sc.cticketcode TICKET,scd.cpositioncode CELL,scd.palletcode PALLET
 		FROM STOCK_CHECKBILL sc WITH(NOLOCK)
 
 		INNER JOIN STOCK_CHECKBILL_D scd
