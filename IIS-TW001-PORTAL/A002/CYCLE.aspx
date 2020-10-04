@@ -97,15 +97,16 @@
         
         <%=GetHtmlTableWhRec(@"
 
-		SELECT sc.cstatus STAT,
-		       sc.cticketcode TICKET,scd.cpositioncode CELL,scd.palletcode PALLET
-,scd.cinvcode PART, scd.iquantity QTY 
-		FROM STOCK_CHECKBILL sc WITH(NOLOCK)
+SELECT sc.cstatus STAT, sc.cticketcode TICKET
+,sc.checktype CHK,sc.worktype WRK
+,FORMAT(sc.dcirclecheckbegindate,'yyyy-MM-dd') START_DT
+,FORMAT(sc.dcirclecheckenddate,'yyyy-MM-dd') END_DT
+,scd.cpositioncode CELL,scd.palletcode PALLET ,scd.cinvcode PART, scd.iquantity QTY 
 
-		INNER JOIN STOCK_CHECKBILL_D scd
-		on sc.id = scd.id
-		WHERE sc.cstatus in ('1','6')
-		ORDER BY sc.cticketcode DESC, scd.cpositioncode
+FROM STOCK_CHECKBILL sc WITH(NOLOCK) 
+INNER JOIN STOCK_CHECKBILL_D scd on sc.id = scd.id 
+WHERE sc.cstatus in ('1','6') ORDER BY sc.cticketcode DESC, scd.cpositioncode
+
 ")%>
         
 
