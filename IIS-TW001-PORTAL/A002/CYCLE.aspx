@@ -118,6 +118,29 @@ WHERE sc.cstatus in ('1','6') ORDER BY sc.cticketcode DESC, scd.cpositioncode
 <li>WRK worktype 作业方式</li>
 
         </ul>
+
+        
+           <hr />
+          <h3>入庫單狀態統計表</h3>
+        
+        <%=GetHtmlTableWhRec(@"
+
+        SELECT 	cstatus, operationtype,count(*) cnt FROM inbill
+group by cstatus, operationtype
+order by cstatus, operationtype
+")%>
+            
+           <hr />
+               <h3>出庫單狀態統計表</h3>
+        
+        <%=GetHtmlTableWhRec(@"
+
+SELECT 	cstatus, operationtype,count(*) cnt FROM outbill
+group by cstatus, operationtype
+order by cstatus, operationtype
+")%>
+        
+
            <hr />
           <h3>調撥單狀態統計表</h3>
         
@@ -128,6 +151,9 @@ group by cstatus, cdefine1
 order by cstatus, cdefine1
 
 ")%>
+
+
+
         
          NOTE:http://tmc.jungle123.com/hd/db/STOCK_CHECKBILL/
         <ul>
