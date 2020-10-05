@@ -118,9 +118,25 @@ WHERE sc.cstatus in ('1','6') ORDER BY sc.cticketcode DESC, scd.cpositioncode
 <li>WRK worktype 作业方式</li>
 
         </ul>
+           <hr />
+          <h3>調撥單狀態統計表</h3>
+        
+        <%=GetHtmlTableWhRec(@"
+
+      SELECT 	cstatus, cdefine1,count(*) cnt FROM ALLOCATE
+group by cstatus, cdefine1
+order by cstatus, cdefine1
+
+")%>
+        
+         NOTE:http://tmc.jungle123.com/hd/db/STOCK_CHECKBILL/
+        <ul>
+            <li>cstatus 	0:未處理，1:已審核，2:...）</li>
+<li>cdefine1 自定义1 0:普通调拨 1：出库调拨至备料储位 2：备料储位回库</li>
+
+        </ul>
 
 
-      
 
         <div>
             <hr />
