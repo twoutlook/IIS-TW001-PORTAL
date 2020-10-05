@@ -139,7 +139,18 @@ SELECT 	cstatus, operationtype,count(*) cnt FROM outbill
 group by cstatus, operationtype
 order by cstatus, operationtype
 ")%>
+             <hr />
+               <h3>循環盤單狀態統計表</h3>
         
+        <%=GetHtmlTableWhRec(@"
+
+        SELECT 	cstatus,count(*) cnt FROM STOCK_CHECKBILL
+group by cstatus
+order by cstatus
+")%>
+
+
+
 
            <hr />
           <h3>調撥單狀態統計表</h3>
