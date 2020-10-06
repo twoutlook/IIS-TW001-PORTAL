@@ -5,13 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet"
-    <video src="video/0917.mp4" controls="controls" />
-        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
+
+      
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
 
 
-    <script>hljs.initHighlightingOnLoad();</script>
+
 
 
     <style>
