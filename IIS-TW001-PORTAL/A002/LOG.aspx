@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CYCLE.aspx.cs" Inherits="CYCLE" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LOG.aspx.cs" Inherits="LOG" %>
 
 <!DOCTYPE html>
 
@@ -87,94 +87,22 @@
     <div class="container-fluid">
           <h1>
             <br />
-         <a href='./'>Index</a> ->盤點-出庫</h1>
-         <h3>循环盘点列表</h3>
+         <a href='./'>系統信息管理</a> ->BASE_INTERFACELOG</h1>
+        <p>DB 數據字典 <a href="http://tmc.jungle123.com/hd/db/CMD_MST/">http://tmc.jungle123.com/hd/db/CMD_MST/</a> </p>
+       <h3>命令列表-最近</h3>
 
       
-    
-
-          <h3>狀態為 1 或 6</h3>
-        
         <%=GetHtmlTableWhRec(@"
 
-SELECT sc.cstatus STAT,
-scd.cstatus STAT2,
-sc.cticketcode TICKET
-,sc.checktype CHK,sc.worktype WRK
-,FORMAT(sc.dcirclecheckbegindate,'yyyy-MM-dd') START_DT
-,FORMAT(sc.dcirclecheckenddate,'yyyy-MM-dd') END_DT
-,scd.cpositioncode CELL,scd.palletcode PALLET ,scd.cinvcode PART, scd.iquantity QTY 
 
-FROM STOCK_CHECKBILL sc WITH(NOLOCK) 
-INNER JOIN STOCK_CHECKBILL_D scd on sc.id = scd.id 
-WHERE sc.cstatus in ('1','6') ORDER BY sc.cticketcode DESC, scd.cpositioncode
-
+select typeid, METHODNAME, ERRORMSG,REMARK,TYPENAME,min(bo) BO_MIN,min(CREATEDATE) DT_START,MAX(CREATEDATE) DT_END,COUNT(*) CNT
+from 
+BASE_INTERFACELOG
+where typeid in ('24','27')
+GROUP BY typeid, METHODNAME, ERRORMSG,REMARK,TYPENAME
+order by min(CREATEDATE) DESC
 ")%>
         
-
-      
-        <hr />
-     NOTE:http://tmc.jungle123.com/hd/db/STOCK_CHECKBILL/
-        <ul>
-            <li>CHK checktype 	盘点类型（0:物理，1:循环，2:抽盘）</li>
-<li>WRK worktype 作业方式</li>
-
-        </ul>
-
-        
-           <hr />
-          <h3>入庫單狀態統計表</h3>
-        
-        <%=GetHtmlTableWhRec(@"
-
-        SELECT 	cstatus, operationtype,count(*) cnt FROM inbill
-group by cstatus, operationtype
-order by cstatus, operationtype
-")%>
-            
-           <hr />
-               <h3>出庫單狀態統計表</h3>
-        
-        <%=GetHtmlTableWhRec(@"
-
-SELECT 	cstatus, operationtype,count(*) cnt FROM outbill
-group by cstatus, operationtype
-order by cstatus, operationtype
-")%>
-             <hr />
-               <h3>循環盤單狀態統計表</h3>
-        
-        <%=GetHtmlTableWhRec(@"
-
-        SELECT 	cstatus,count(*) cnt FROM STOCK_CHECKBILL
-group by cstatus
-order by cstatus
-")%>
-
-
-
-
-           <hr />
-          <h3>調撥單狀態統計表</h3>
-        
-        <%=GetHtmlTableWhRec(@"
-
-      SELECT 	cstatus, cdefine1,count(*) cnt FROM ALLOCATE
-group by cstatus, cdefine1
-order by cstatus, cdefine1
-
-")%>
-
-
-
-        
-         NOTE:http://tmc.jungle123.com/hd/db/STOCK_CHECKBILL/
-        <ul>
-            <li>cstatus 	0:未處理，1:已審核，2:...）</li>
-<li>cdefine1 自定义1 0:普通调拨 1：出库调拨至备料储位 2：备料储位回库</li>
-
-        </ul>
-
 
 
         <div>
