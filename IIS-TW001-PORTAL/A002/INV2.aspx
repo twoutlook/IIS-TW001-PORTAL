@@ -102,7 +102,7 @@ SELECT * FROM
 
 ")%>
 
-            NOTE: 使用DB增量部署 1013.7z
+            NOTE: 使用DB增量部署 1013.7z,可在頁面源代碼查看。</a>
             </div>
         <div><hr />
             
