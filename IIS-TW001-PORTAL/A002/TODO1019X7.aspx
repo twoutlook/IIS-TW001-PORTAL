@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TODO1019.aspx.cs" Inherits="TODO1019" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TODO1019X7.aspx.cs" Inherits="TODO1019X7" %>
 
 <!DOCTYPE html>
 
@@ -87,9 +87,10 @@
     <div class="container-fluid">
         <h1>
             <br />
-            <a href='./'>系統信息管理</a> ->TODO 10/19</h1>
+            <a href='./'>系統信息管理</a> ->  <a href='./TODO1019.aspx'>TODO 10/19</a></h1>
         <h3></h3>
-
+        <img src="img/TODO1019/1019X7.png" />
+        <div style="display:none"
         <table class="gridtable">
 
             <tr>
@@ -170,7 +171,7 @@
                 <td>PDA盤點單
 PDA盤點補單也需要可以料號和RANK分開輸入
                 </td>
-                        <td>由 Mark陳炳陵 負責, <a href="TODO1019X7.aspx">NOTE</a> </td>
+                        <td>由 Mark陳炳陵 負責 </td>
         
                 <td></td>
             </tr>
@@ -199,7 +200,7 @@ PDA盤點補單也需要可以料號和RANK分開輸入
 
         </table>
 
-
+            </div>
         <div>
             <hr />
             頁面更新時間: <%=showTime()%>
