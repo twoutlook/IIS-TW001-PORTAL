@@ -1,16 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CMD - Copy.aspx.cs" Inherits="CMD" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DDL.aspx.cs" Inherits="DDL" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-
-      
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
 
 
-
+    <script>hljs.initHighlightingOnLoad();</script>
 
 
     <style>
@@ -87,74 +87,47 @@
     <div class="container-fluid">
           <h1>
             <br />
-         <a href='./'>系統信息管理</a> ->CMD</h1>
-        <p>DB 數據字典 <a href="http://tmc.jungle123.com/hd/db/CMD_MST/">http://tmc.jungle123.com/hd/db/CMD_MST/</a> </p>
-       <h3>命令列表-未處理 (09/30 14:00 包括狀態為0 和1)</h3>
+         <a href='./'>系統信息管理</a> ->DDL</h1>
+        <p>DB 數據字典 <a href="http://tmc.jungle123.com/hd/db/">http://tmc.jungle123.com/hd/db/</a> </p>
+       <h3></h3>
 
       
         <%=GetHtmlTableWhRec(@"
-SELECT 
-WmsTskId
-,CmdSno
-,CmdSts
+select distinct f.enable, f.Is_Query IS_QRY,DISABLE_DATE,s.LANGUAGEID LANG,t.userno, s.FLAG_TYPE,s.FLAG_NAME as FUNCNAME ,f.cerpcode as EXTEND1 
 
-,StnNo
-,CmdMode
-,Loc	
-,[TrnDate]
-,[EndTime]
-,CMDNO
-,LINEID
-,CTICKETCODE
-,PACKAGENO
-,REMARK	 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo in ('1','2') and cmd.CmdSts in ('0','1');
+from outtype f 
+inner join ( select FUNCNAME,EXTEND1,userno from UserFunction 
+--where userno= 'admin' 
+) t 
+on t.EXTEND1 = f.cerpcode 
+INNER JOIN dbo.V_SYS_PARAMETER s WITH(NOLOCK) 
+ON s.FLAG_ID= f.cerpcode 
+--AND s.FLAG_TYPE='OUTTYPE'
+AND s.LANGUAGEID='zh-TW'
+WHERE 1=1
 
-")%>
-        
-NOTE:狀態1是指進行中,12,22,52 可以继续下命令,狀態會保持為1
-            
-        <ul>
-            <li>12：入库任务下达主机命令</li>
-<li>22：出库任务下达主机命令 </li>
-<li>52：库对库任务下达主机命令</li>
-
-             
-             
-            
-        </ul>
-
-
-        <hr />
-     
-        
-          <h3>命令列表-最近30筆</h3>
- 
-      
-        <%=GetHtmlTableWhRec(@"
-SELECT TOP 30
-WmsTskId
-,CmdSno
-,CmdSts
-
-,StnNo
-,CmdMode
-,Loc	
-,[TrnDate]
-,[EndTime]
-,CMDNO
-,LINEID
-,CTICKETCODE
-,PACKAGENO
-,REMARK	 FROM CMD_MST cmd WHERE cmd.LINEID = 1 and cmd.StnNo in ('1','2') 
-ORDER BY WmsTskId DESC
-;
+ORDER BY userno,FLAG_TYPE,EXTEND1,FUNCNAME
 
 ")%>
+    <hr />    
 
-        NOTE:        ,FORMAT(CAST([TrnDate] As DATETIME),'MM/dd HH:mm') TRANS  遇到不同格式的日期時間會出錯。
-        
-           <hr />
+<pre><code>
+    select distinct f.enable, f.Is_Query IS_QRY,DISABLE_DATE,s.LANGUAGEID LANG,t.userno, s.FLAG_TYPE,s.FLAG_NAME as FUNCNAME ,f.cerpcode as EXTEND1 
 
+from outtype f 
+inner join ( select FUNCNAME,EXTEND1,userno from UserFunction 
+--where userno= 'admin' 
+) t 
+on t.EXTEND1 = f.cerpcode 
+INNER JOIN dbo.V_SYS_PARAMETER s WITH(NOLOCK) 
+ON s.FLAG_ID= f.cerpcode 
+--AND s.FLAG_TYPE='OUTTYPE'
+AND s.LANGUAGEID='zh-TW'
+WHERE 1=1
+
+ORDER BY userno,FLAG_TYPE,EXTEND1,FUNCNAME
+    </code>
+</pre>
         
 
 
