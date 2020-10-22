@@ -219,7 +219,10 @@ PDA盤點補單也需要可以料號和RANK分開輸入
                 <th>12</th>
                 <td>開平 (10/21 20:20) 填加用戶的業務權限沒有能夠反映出來,<a href="img/TODO1019/1019X12.mp4">如錄屏</a>。按彥君(10/22 10:24) 数据同步。無效。
                 </td>
-                <td>看了数据同步的SQL語句,<pre><code>
+                <td>看了数据同步的SQL語句,加上小仲的指導: 把这个sp里，权限平台的数据库引用换一下就ok了 ,先在本機開發環境完成,<a href="img/TODO1019/1019X12A.mp4">如錄屏</a>。 並更新云1,<a href="img/TODO1019/1019X12B.mp4">如錄屏</a>。
+                    
+                    
+                    <pre style="display:none"><code>
                     USE [TaiWei]
 GO
 /****** Object:  StoredProcedure [dbo].[Proc_SyncAccessRight]    Script Date: 2020/10/22 10:34:11 ******/
