@@ -1,5 +1,5 @@
+IIS-TW001-PORTAL/Web.config
 
 # ignore generated html files,
-IIS-TW001-PORTAL/*.config
 IIS-TW001-PORTAL/Bin/IBM.Data.DB2.dll
 IIS-TW001-PORTAL/Bin/System.Data.SQLite.dll
