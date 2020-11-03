@@ -299,9 +299,11 @@ WHERE cpositioncode = '{0}'"
     public string ShowSTOCK_CURRENT_ADJUST()
     {
         string strSQL = String.Format(@"SELECT 
-cpositioncode,cpositionname,	cinvcode,	cinvname,	oriqty,newqty
+cpositioncode,cpositionname,	cinvcode,	cinvname,	oriqty,newqty,createtime
 FROM STOCK_CURRENT_ADJUST_D 
-WHERE cpositioncode = '{0}'"
+WHERE cpositioncode = '{0}'
+ORDER BY createtime DESC
+"
             , cell_num);
 
         return GetHtmlTableWhRec(strSQL);
