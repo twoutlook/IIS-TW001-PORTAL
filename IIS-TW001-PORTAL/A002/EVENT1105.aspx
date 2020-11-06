@@ -94,14 +94,14 @@
                   <hr />
                   <h4>預擬解決方案:</h4>
                   <ol>
-                      <li>後台直接以正確的料號調整。
+                      <li>現場暫停, 全備數據還原於云1,後台直接以正確的料號品名調整後,再還原到現場數據庫。
                           <ul>
                               <li>優:</li>
                               <li>缺:</li>
                           </ul>
 
                       </li>
-                      <li>現場暫停, 以云3全新正確的料號頁面操作後數據全備還原。
+                      <li>現場暫停, 全備數據還原於云3,頁面操作後,再還原到現場數據庫。
                                 <ul>
                               <li>優:</li>
                               <li>缺:</li>
@@ -130,7 +130,7 @@ ORDER BY cpositioncode
                   <h3>入庫單</h3>
      <%=GetHtmlTableWhRec(@"
 
-SELECT cticketcode,T2.cinvcode,T2.cinvname,iquantity,cpositioncode,cposition
+SELECT cticketcode,T2.cinvcode,T2.cinvname,iquantity,cpositioncode,cposition,t3.palletcode
 FROM INBILL T1 INNER JOIN INBILL_D T2 ON T1.id =T2.id 
 INNER JOIN INBILL_D_SN T3 ON T2.ids=T3.inbill_d_ids
 WHERE dcreatetime< '2020-11-06'
