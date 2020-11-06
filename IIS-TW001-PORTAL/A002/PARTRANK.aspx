@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PART.aspx.cs" Inherits="PART" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PARTRANK.aspx.cs" Inherits="PARTRANK" %>
 
 <!DOCTYPE html>
 
@@ -87,7 +87,7 @@
     <div class="container">
      <h1>
             <br />
-         <a href='./'>系統信息管理</a> -> PART</h1>
+         <a href='./'>系統信息管理</a> -> PART 在品名有標示 RANK 字樣</h1>
 
 
 
@@ -98,7 +98,9 @@
               <%=GetHtmlTableWhRec(@"
 select top 3000 ID, PART 料號 ,RANK_FINAL [批/序號(RANK)],PART_FULL 數據庫實際料號 
  ,cpartname 品名
-from TW_BASE_PART order by PART_FULL
+from TW_BASE_PART 
+ WHERE cpartname LIKE '%RANK%'
+order by PART_FULL
 
 ")%>
             </div>

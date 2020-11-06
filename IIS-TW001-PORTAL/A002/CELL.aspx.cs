@@ -297,7 +297,7 @@ ON T1.cinvcode = T2.PART_FULL WHERE CELL = '{0}'"
         sb.Append(GetHTMLDataWhRec(reader));
         sb.Append("</table>");
 
-        //      sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
+        sb.Append("<pre><code>" + strSQL + "</code></pre>");
         thisConnection.Close();
         return sb.ToString();
     }

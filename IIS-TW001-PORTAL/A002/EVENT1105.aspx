@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PART.aspx.cs" Inherits="PART" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EVENT1105.aspx.cs" Inherits="EVENT1105" %>
 
 <!DOCTYPE html>
 
@@ -84,28 +84,71 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-     <h1>
+    <div class="container-fluid">
+        <h1>
             <br />
-         <a href='./'>系統信息管理</a> -> PART</h1>
+           <a href='./'>系統信息管理</a> ->EVENT1105 </h1>
+              <div>
+                  <hr />
+                  <h3>跟據開平和先顥2020-11-05反應,客戶啟用系統,料號主檔部分不正確且已有入庫記錄。目前涉及2個料號  11個儲位</h3>
+                  <hr />
+                  <h4>預擬解決方案:</h4>
+                  <ol>
+                      <li>後台直接以正確的料號調整。
+                          <ul>
+                              <li>優:</li>
+                              <li>缺:</li>
+                          </ul>
 
+                      </li>
+                      <li>現場暫停, 以云3全新正確的料號頁面操作後數據全備還原。
+                                <ul>
+                              <li>優:</li>
+                              <li>缺:</li>
+                          </ul>
 
+                      </li>
+                      <li>增加庫存調整, 針對需求只調整料號。
+                                <ul>
+                              <li>優:</li>
+                              <li>缺:</li>
+                          </ul>
 
+                      </li>
 
+                  </ol>
 
-        <div style="font-family:monospace">
+            <hr />
+                  <h3>現有庫存</h3>
+     <%=GetHtmlTableWhRec(@"
 
-              <%=GetHtmlTableWhRec(@"
-select top 3000 ID, PART 料號 ,RANK_FINAL [批/序號(RANK)],PART_FULL 數據庫實際料號 
- ,cpartname 品名
-from TW_BASE_PART order by PART_FULL
-
+SELECT cpositioncode,	cposition,	cinvcode,	cinvname,	iqty,T2.palletcode
+FROM STOCK_CURRENT T1 INNER JOIN STOCK_CURRENT_SN T2 ON T1.id =T2.stock_id WHERE lastupdatetime< '2020-11-06'
+ORDER BY cpositioncode
 ")%>
-            </div>
-        <div><hr />
-           頁面更新時間: <%=showTime()%>
-        <hr /> </div>
-       
+                  <hr />
+                  <h3>入庫單</h3>
+     <%=GetHtmlTableWhRec(@"
+
+SELECT cticketcode,T2.cinvcode,T2.cinvname,iquantity,cpositioncode,cposition
+FROM INBILL T1 INNER JOIN INBILL_D T2 ON T1.id =T2.id 
+INNER JOIN INBILL_D_SN T3 ON T2.ids=T3.inbill_d_ids
+WHERE dcreatetime< '2020-11-06'
+ORDER BY cticketcode
+")%>
+
+                  <hr />
+                                    <h3>入庫通知單</h3>
+     <%=GetHtmlTableWhRec(@"
+
+SELECT cticketcode, cinvcode,cinvname,iquantity
+FROM INASN T1 INNER JOIN INASN_D T2 ON T1.id =T2.id WHERE dcreatetime< '2020-11-06'
+ORDER BY cticketcode
+")%>
+            頁面更新時間: <%=showTime()%>
+            <hr />
+        </div>
+
     </div>
 </body>
 </html>

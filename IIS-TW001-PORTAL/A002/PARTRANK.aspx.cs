@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class PART : System.Web.UI.Page
+public partial class PARTRANK : System.Web.UI.Page
 {
     public string cell_num = "";
     protected void Page_Load(object sender, EventArgs e)

@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class PART : System.Web.UI.Page
+public partial class EVENT1105 : System.Web.UI.Page
 {
     public string cell_num = "";
     protected void Page_Load(object sender, EventArgs e)
@@ -21,11 +21,6 @@ public partial class PART : System.Web.UI.Page
     {
         return cell_num;
     }
-    public string showTime()
-    {
-        return  DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-    }
-
     //https://www.it1352.com/1205195.html
     public static string DBConnection()
     {
@@ -219,8 +214,6 @@ Proc_InBillTOSTOCK_CURRENT</li>
         sb.Append("</tr>");
         return sb.ToString();
     }
-
-    // NOTE by Mark, 09/28
     public string GetHTMLHeaderWhRec(SqlDataReader reader)
     {
         var columns = new List<string>();
@@ -283,6 +276,10 @@ Proc_InBillTOSTOCK_CURRENT</li>
         //     sb.Append("<p  style='margin-top:5px;'><span style='background-Color:lightgrey'>" + strSQL + "</span></p>");
         thisConnection.Close();
         return sb.ToString();
+    }
+    public string showTime()
+    {
+        return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
     }
     public string GetTW_WH_Tr(string strSQL)
     {
@@ -352,22 +349,22 @@ Proc_InBillTOSTOCK_CURRENT</li>
 
 
             string CUST = Pre+Z+Y;
-            if (P.Length >0)
-            {
+            //if (P.Length >0)
+            //{
                 if (P.Length > 10)// 	20200915180338447, 潘高做的虛擬儲位 CECACA
                 {
-                    sb.AppendFormat("<td style='background-Color:#CECECE'><b><a href='CELL.aspx?CELL={1}'>{0}</a></b></td>", CUST, CELL);
+                    sb.AppendFormat("<td  style='background-Color:#CECECE'><b><a href='CELL2.aspx?CUST={0}&CELL={1}'>{0}</a></b></td>", CUST, CELL);
                 }
                 else
                 {
-                    sb.AppendFormat("<td  style='background-Color:#F7F7C0'><a href='CELL.aspx?CELL={1}'>{0}</a></td>", CUST, CELL);
+                    sb.AppendFormat("<td  style='background-Color:#FFFFFF'><a href='CELL2.aspx?CUST={0}&CELL={1}'>{0}</a></td>", CUST, CELL);
                 }
                
-            }
-            else
-            {
-                sb.AppendFormat("<td>{0}</td>", CUST);
-            }
+            //}
+            //else
+            //{
+            //    sb.AppendFormat("<td>{0}</td>", CUST);
+            //}
           
 
         }
@@ -435,8 +432,10 @@ ORDER BY CELL
         {
      //       strPick = "<Td style=\"border-width:0px;\"></Td>";
         }
-     
+        string strX = "0" + X;
+        string strZ = "0" + Z;
 
+        strPick = String.Format("<Th style='font-size:85%; color:gray'>01-{0}___{1}</Th>",strX,strZ);
 
         return GetTW_WH_Tr_X_Z(strSQL, X, Z,strPick);
         // string htmlStr = "";
@@ -570,8 +569,6 @@ ORDER BY CELL
         //htmlStr += "<tr><td>" + Id + "</td><td>" + OwnerCode + "</td><td>" + OwnerName + "</td></tr>";
     }
 
-
-    // NOTE by Mark, 09/28
     private string GetHTMLDataWhRec(SqlDataReader reader)
     {
         StringBuilder sb = new StringBuilder("");
@@ -626,24 +623,12 @@ ORDER BY CELL
         //var htmlStr = "<tr><td>" + record[0] + "</td><td>" + record[1] + "</td><td>" + record[2] + "</td></tr>";
         return sb.ToString();
     }
-
-
-    // NOTE by Mark, 09/28  reader.GetName(i)
     private static string ReadSingleRowV2WhRec(IDataRecord record, int rec)
     {
         StringBuilder sb = new StringBuilder("<tr><th>" + rec + "</th>");
         for (int i = 0; i < record.FieldCount; i++)
         {
-            //sb.AppendFormat("<td>{0}</td>", record[i])
-            if (record.GetName(i) == "ID") // ID font family MONO
-            {
-                sb.AppendFormat("<td style=\"font-family:monospace\">{0}</td>", record[i], record.GetName(i));
-            }
-            else
-            {
-                sb.AppendFormat("<td>{0}</td>", record[i]);
-            }
-           
+            sb.AppendFormat("<td>{0}</td>", record[i]);
 
         }
         sb.Append("</tr>");
